@@ -6,18 +6,15 @@ import {Menu, Code} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Sheet, SheetContent, SheetTrigger, SheetClose} from '@/components/ui/sheet';
 import {cn} from '@/lib/utils';
-import {useTranslations} from 'next-intl';
-import LocaleSwitcher from '@/components/locale-switcher';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const t = useTranslations('Header');
 
   const navLinks = [
-    {href: '#servicios', label: t('services')},
-    {href: '#proyectos', label: t('projects')},
-    {href: '#sobre-mi', label: t('about')},
-    {href: '#contacto', label: t('contact')},
+    {href: '#servicios', label: 'Servicios'},
+    {href: '#proyectos', label: 'Proyectos'},
+    {href: '#sobre-mi', label: 'Sobre Mí'},
+    {href: '#contacto', label: 'Contacto'},
   ];
 
   useEffect(() => {
@@ -51,12 +48,10 @@ export function Header() {
             </Link>
           ))}
           <Button asChild>
-            <Link href="#lead-form">{t('freeConsultation')}</Link>
+            <Link href="#lead-form">Consulta Gratuita</Link>
           </Button>
-          <LocaleSwitcher />
         </nav>
         <div className="md:hidden flex items-center gap-2">
-          <LocaleSwitcher />
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -85,7 +80,7 @@ export function Header() {
               <div className="mt-auto border-t pt-6">
                 <SheetClose asChild>
                   <Button asChild size="lg" className="w-full">
-                    <Link href="#lead-form">{t('freeConsultation')}</Link>
+                    <Link href="#lead-form">Consulta Gratuita</Link>
                   </Button>
                 </SheetClose>
               </div>
