@@ -88,7 +88,7 @@ export function LeadFormStepper() {
 
   const prevStep = () => {
     if (currentStep > 0) {
-      setCurrent-Step(currentStep - 1);
+      setCurrentStep(currentStep - 1);
     }
   };
   
@@ -273,3 +273,5 @@ export function LeadFormStepper() {
     </Card>
   );
 }
+
+    
