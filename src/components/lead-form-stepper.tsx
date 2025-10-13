@@ -13,6 +13,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Check, Loader2, ArrowRight, PartyPopper } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const step1Schema = z.object({
   projectType: z.string().min(1, 'Debes seleccionar un tipo de proyecto.'),
@@ -43,6 +44,7 @@ export function LeadFormStepper() {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [direction, setDirection] = useState(1);
   const { toast } = useToast();
 
   const {
@@ -67,6 +69,7 @@ export function LeadFormStepper() {
 
     setIsSubmitting(false);
     setIsSubmitted(true);
+    setDirection(1);
     setCurrentStep(prev => prev + 1);
 
     toast({
@@ -82,19 +85,45 @@ export function LeadFormStepper() {
     if (!output) return;
 
     if (currentStep < steps.length - 1) {
+      setDirection(1);
       setCurrentStep(currentStep + 1);
     }
   };
 
   const prevStep = () => {
     if (currentStep > 0) {
+      setDirection(-1);
       setCurrentStep(currentStep - 1);
     }
   };
   
+  const stepVariants = {
+    hidden: (direction: number) => ({
+      opacity: 0,
+      x: direction > 0 ? 50 : -50,
+    }),
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.3,
+        ease: 'easeInOut',
+      },
+    },
+    exit: (direction: number) => ({
+      opacity: 0,
+      x: direction > 0 ? -50 : 50,
+      transition: {
+        duration: 0.3,
+        ease: 'easeInOut',
+      },
+    }),
+  };
+
+
   if (isSubmitted) {
     return (
-        <div className="flex flex-col items-center justify-center text-center p-8 bg-secondary rounded-lg">
+        <div className="flex flex-col items-center justify-center text-center p-8 bg-secondary rounded-lg min-h-[500px]">
             <PartyPopper className="h-16 w-16 text-primary mb-4" />
             <h2 className="font-headline text-2xl font-semibold text-foreground mb-2">¡Gracias por tu interés!</h2>
             <p className="text-muted-foreground max-w-md">He recibido tu solicitud y me pondré en contacto contigo en menos de 24 horas para hablar sobre tu proyecto.</p>
@@ -103,7 +132,7 @@ export function LeadFormStepper() {
   }
 
   return (
-    <Card className="w-full max-w-2xl mx-auto shadow-2xl shadow-primary/10">
+    <Card className="w-full max-w-2xl mx-auto shadow-2xl shadow-primary/10 overflow-hidden">
       <CardHeader>
         <nav aria-label="Progress">
           <ol role="list" className="space-y-4 md:flex md:space-x-8 md:space-y-0">
@@ -131,124 +160,152 @@ export function LeadFormStepper() {
         </nav>
       </CardHeader>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <CardContent className="py-6">
-          {currentStep === 0 && (
-            <Controller
-              name="projectType"
-              control={control}
-              render={({ field }) => (
-                <RadioGroup {...field} onValueChange={field.onChange} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <h3 className="sm:col-span-2 font-semibold text-lg">¿Qué tipo de proyecto tienes en mente?</h3>
-                  {[
-                    { value: "web-corporativa", label: "Sitio web corporativo" },
-                    { value: "tienda-online", label: "Tienda online" },
-                    { value: "webapp", label: "Web app personalizada" },
-                    { value: "landing-page", label: "Landing page" },
-                    { value: "otro", label: "Otro" }
-                  ].map(option => (
-                    <Label key={option.value} htmlFor={option.value} className={cn(
-                      "flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary",
-                      field.value === option.value && "border-primary bg-primary/10"
-                    )}>
-                      <RadioGroupItem value={option.value} id={option.value} className="sr-only" />
-                      <span className="text-base font-medium">{option.label}</span>
-                    </Label>
-                  ))}
-                  {errors.projectType && <p className="text-destructive sm:col-span-2">{errors.projectType.message}</p>}
-                </RadioGroup>
+        <CardContent className="py-6 min-h-[420px]">
+          <AnimatePresence mode="wait" custom={direction}>
+              {currentStep === 0 && (
+                <motion.div
+                  key={0}
+                  custom={direction}
+                  variants={stepVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                >
+                  <Controller
+                    name="projectType"
+                    control={control}
+                    render={({ field }) => (
+                      <RadioGroup {...field} onValueChange={field.onChange} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <h3 className="sm:col-span-2 font-semibold text-lg">¿Qué tipo de proyecto tienes en mente?</h3>
+                        {[
+                          { value: "web-corporativa", label: "Sitio web corporativo" },
+                          { value: "tienda-online", label: "Tienda online" },
+                          { value: "webapp", label: "Web app personalizada" },
+                          { value: "landing-page", label: "Landing page" },
+                          { value: "otro", label: "Otro" }
+                        ].map(option => (
+                          <Label key={option.value} htmlFor={option.value} className={cn(
+                            "flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary",
+                            field.value === option.value && "border-primary bg-primary/10"
+                          )}>
+                            <RadioGroupItem value={option.value} id={option.value} className="sr-only" />
+                            <span className="text-base font-medium">{option.label}</span>
+                          </Label>
+                        ))}
+                        {errors.projectType && <p className="text-destructive sm:col-span-2">{errors.projectType.message}</p>}
+                      </RadioGroup>
+                    )}
+                  />
+                </motion.div>
               )}
-            />
-          )}
 
-          {currentStep === 1 && (
-            <div className="space-y-8">
-              <Controller
-                name="hasDesign"
-                control={control}
-                render={({ field }) => (
-                  <RadioGroup {...field} onValueChange={field.onChange} className="space-y-2">
-                    <Label className="text-lg">¿Tienes un diseño UI/UX ya hecho?</Label>
-                    <div className="flex gap-4">
-                        <Label htmlFor="design-yes" className="flex items-center gap-2 border border-border rounded-md p-3 px-4 has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                            <RadioGroupItem value="si" id="design-yes" /> Sí
-                        </Label>
-                        <Label htmlFor="design-no" className="flex items-center gap-2 border border-border rounded-md p-3 px-4 has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                            <RadioGroupItem value="no" id="design-no" /> No
-                        </Label>
-                    </div>
-                    {errors.hasDesign && <p className="text-destructive">{errors.hasDesign.message}</p>}
-                  </RadioGroup>
-                )}
-              />
-              <Controller
-                name="deadline"
-                control={control}
-                render={({ field }) => (
-                  <RadioGroup {...field} onValueChange={field.onChange} className="space-y-2">
-                    <Label className="text-lg">¿Cuál es tu plazo estimado?</Label>
-                    <div className="flex flex-wrap gap-4">
-                      {["~1 mes", "2-3 meses", "Flexible"].map(val => (
-                        <Label key={val} htmlFor={`deadline-${val}`} className="flex items-center gap-2 border border-border rounded-md p-3 px-4 has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                          <RadioGroupItem value={val} id={`deadline-${val}`} /> {val}
-                        </Label>
-                      ))}
-                    </div>
-                    {errors.deadline && <p className="text-destructive">{errors.deadline.message}</p>}
-                  </RadioGroup>
-                )}
-              />
-              <Controller
-                name="budget"
-                control={control}
-                render={({ field }) => (
-                    <RadioGroup {...field} onValueChange={field.onChange} className="space-y-2">
-                        <Label className="text-lg">¿Cuál es tu presupuesto aproximado?</Label>
-                        <div className="flex flex-wrap gap-4">
-                            {["<$2k", "$2k-$5k", "$5k-$10k", ">$10k"].map(val => (
-                                <Label key={val} htmlFor={`budget-${val}`} className="flex items-center gap-2 border border-border rounded-md p-3 px-4 has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                                    <RadioGroupItem value={val} id={`budget-${val}`} /> {val}
-                                </Label>
+              {currentStep === 1 && (
+                <motion.div
+                  key={1}
+                  custom={direction}
+                  variants={stepVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                >
+                  <div className="space-y-8">
+                    <Controller
+                      name="hasDesign"
+                      control={control}
+                      render={({ field }) => (
+                        <RadioGroup {...field} onValueChange={field.onChange} className="space-y-2">
+                          <Label className="text-lg">¿Tienes un diseño UI/UX ya hecho?</Label>
+                          <div className="flex gap-4">
+                              <Label htmlFor="design-yes" className="flex items-center gap-2 border border-border rounded-md p-3 px-4 has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+                                  <RadioGroupItem value="si" id="design-yes" /> Sí
+                              </Label>
+                              <Label htmlFor="design-no" className="flex items-center gap-2 border border-border rounded-md p-3 px-4 has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+                                  <RadioGroupItem value="no" id="design-no" /> No
+                              </Label>
+                          </div>
+                          {errors.hasDesign && <p className="text-destructive">{errors.hasDesign.message}</p>}
+                        </RadioGroup>
+                      )}
+                    />
+                    <Controller
+                      name="deadline"
+                      control={control}
+                      render={({ field }) => (
+                        <RadioGroup {...field} onValueChange={field.onChange} className="space-y-2">
+                          <Label className="text-lg">¿Cuál es tu plazo estimado?</Label>
+                          <div className="flex flex-wrap gap-4">
+                            {["~1 mes", "2-3 meses", "Flexible"].map(val => (
+                              <Label key={val} htmlFor={`deadline-${val}`} className="flex items-center gap-2 border border-border rounded-md p-3 px-4 has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+                                <RadioGroupItem value={val} id={`deadline-${val}`} /> {val}
+                              </Label>
                             ))}
-                        </div>
-                        {errors.budget && <p className="text-destructive">{errors.budget.message}</p>}
-                    </RadioGroup>
-                )}
-              />
-            </div>
-          )}
+                          </div>
+                          {errors.deadline && <p className="text-destructive">{errors.deadline.message}</p>}
+                        </RadioGroup>
+                      )}
+                    />
+                    <Controller
+                      name="budget"
+                      control={control}
+                      render={({ field }) => (
+                          <RadioGroup {...field} onValueChange={field.onChange} className="space-y-2">
+                              <Label className="text-lg">¿Cuál es tu presupuesto aproximado?</Label>
+                              <div className="flex flex-wrap gap-4">
+                                  {["<$2k", "$2k-$5k", "$5k-$10k", ">$10k"].map(val => (
+                                      <Label key={val} htmlFor={`budget-${val}`} className="flex items-center gap-2 border border-border rounded-md p-3 px-4 has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+                                          <RadioGroupItem value={val} id={`budget-${val}`} /> {val}
+                                      </Label>
+                                  ))}
+                              </div>
+                              {errors.budget && <p className="text-destructive">{errors.budget.message}</p>}
+                          </RadioGroup>
+                      )}
+                    />
+                  </div>
+                </motion.div>
+              )}
 
-          {currentStep === 2 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Controller name="name" control={control} render={({ field }) => (
-                    <div className="space-y-2">
-                        <Label htmlFor="name">Nombre</Label>
-                        <Input id="name" {...field} />
-                        {errors.name && <p className="text-destructive">{errors.name.message}</p>}
-                    </div>
-                )}/>
-                <Controller name="email" control={control} render={({ field }) => (
-                    <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
-                        <Input id="email" type="email" {...field} />
-                        {errors.email && <p className="text-destructive">{errors.email.message}</p>}
-                    </div>
-                )}/>
-                <Controller name="company" control={control} render={({ field }) => (
-                    <div className="space-y-2 sm:col-span-2">
-                        <Label htmlFor="company">Empresa (Opcional)</Label>
-                        <Input id="company" {...field} />
-                    </div>
-                )}/>
-                <Controller name="message" control={control} render={({ field }) => (
-                    <div className="space-y-2 sm:col-span-2">
-                        <Label htmlFor="message">Mensaje o descripción adicional</Label>
-                        <Textarea id="message" rows={4} {...field} />
-                        {errors.message && <p className="text-destructive">{errors.message.message}</p>}
-                    </div>
-                )}/>
-            </div>
-          )}
-
+              {currentStep === 2 && (
+                <motion.div
+                  key={2}
+                  custom={direction}
+                  variants={stepVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                >
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <Controller name="name" control={control} render={({ field }) => (
+                          <div className="space-y-2">
+                              <Label htmlFor="name">Nombre</Label>
+                              <Input id="name" {...field} />
+                              {errors.name && <p className="text-destructive">{errors.name.message}</p>}
+                          </div>
+                      )}/>
+                      <Controller name="email" control={control} render={({ field }) => (
+                          <div className="space-y-2">
+                              <Label htmlFor="email">Email</Label>
+                              <Input id="email" type="email" {...field} />
+                              {errors.email && <p className="text-destructive">{errors.email.message}</p>}
+                          </div>
+                      )}/>
+                      <Controller name="company" control={control} render={({ field }) => (
+                          <div className="space-y-2 sm:col-span-2">
+                              <Label htmlFor="company">Empresa (Opcional)</Label>
+                              <Input id="company" {...field} />
+                          </div>
+                      )}/>
+                      <Controller name="message" control={control} render={({ field }) => (
+                          <div className="space-y-2 sm:col-span-2">
+                              <Label htmlFor="message">Mensaje o descripción adicional</Label>
+                              <Textarea id="message" rows={4} {...field} />
+                              {errors.message && <p className="text-destructive">{errors.message.message}</p>}
+                          </div>
+                      )}/>
+                  </div>
+                </motion.div>
+              )}
+          </AnimatePresence>
         </CardContent>
         <CardFooter className="flex justify-between">
           <Button type="button" variant="outline" onClick={prevStep} disabled={currentStep === 0}>
@@ -273,5 +330,3 @@ export function LeadFormStepper() {
     </Card>
   );
 }
-
-    
