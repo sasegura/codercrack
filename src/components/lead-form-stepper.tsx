@@ -57,6 +57,16 @@ export function LeadFormStepper() {
       currentStep === 0 ? step1Schema : currentStep === 1 ? step2Schema : step3Schema
     ),
     mode: 'onChange',
+    defaultValues: {
+      projectType: '',
+      hasDesign: undefined,
+      deadline: '',
+      budget: '',
+      name: '',
+      email: '',
+      company: '',
+      message: '',
+    },
   });
 
   const onSubmit = async (data: FormData) => {
@@ -330,3 +340,5 @@ export function LeadFormStepper() {
     </Card>
   );
 }
+
+    
