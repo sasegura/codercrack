@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "portfolio-1",
+      "description": "Screenshot of a SaaS dashboard project",
+      "imageUrl": "https://picsum.photos/seed/p1/600/400",
+      "imageHint": "SaaS dashboard"
+    },
+    {
+      "id": "portfolio-2",
+      "description": "Screenshot of a marketing landing page",
+      "imageUrl": "https://picsum.photos/seed/p2/600/400",
+      "imageHint": "landing page"
+    },
+    {
+      "id": "portfolio-3",
+      "description": "Screenshot of an e-commerce website",
+      "imageUrl": "https://picsum.photos/seed/p3/600/400",
+      "imageHint": "ecommerce website"
+    },
+    {
+      "id": "about-me",
+      "description": "Professional headshot of the developer",
+      "imageUrl": "https://picsum.photos/seed/dev/400/400",
+      "imageHint": "professional portrait"
+    }
+  ]
 }
