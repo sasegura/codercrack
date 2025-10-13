@@ -2,7 +2,6 @@
 
 import {generatePerformanceReport} from '@/ai/flows/generate-performance-report';
 import {z} from 'zod';
-import {getTranslations} from 'next-intl/server';
 
 const performanceAuditSchema = z.object({
   url: z.string().url(),
@@ -18,7 +17,6 @@ export async function runPerformanceAudit(
   prevState: PerformanceAuditState,
   formData: FormData
 ): Promise<PerformanceAuditState> {
-  const t = await getTranslations('PerformanceAudit');
 
   const validatedFields = performanceAuditSchema.safeParse({
     url: formData.get('url'),
@@ -26,7 +24,7 @@ export async function runPerformanceAudit(
 
   if (!validatedFields.success) {
     return {
-      message: t('invalidURL'),
+      message: 'Por favor, introduce una URL válida.',
       report: null,
       success: false,
     };
@@ -35,14 +33,14 @@ export async function runPerformanceAudit(
   try {
     const result = await generatePerformanceReport({url: validatedFields.data.url});
     return {
-      message: t('reportSuccess'),
+      message: 'Reporte generado con éxito.',
       report: result.report,
       success: true,
     };
   } catch (error) {
     console.error(error);
     return {
-      message: t('reportError'),
+      message: 'Ha ocurrido un error al generar el reporte. Por favor, inténtalo de nuevo.',
       report: null,
       success: false,
     };
@@ -50,9 +48,9 @@ export async function runPerformanceAudit(
 }
 
 const contactSchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  message: z.string().min(10),
+  name: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }),
+  email: z.string().email({ message: "Por favor, introduce un email válido." }),
+  message: z.string().min(10, { message: "El mensaje debe tener al menos 10 caracteres." }),
 });
 
 export type ContactFormState = {
@@ -64,8 +62,6 @@ export async function submitContactForm(
   prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
-  const t = await getTranslations('ContactForm');
-  
   const validatedFields = contactSchema.safeParse({
     name: formData.get('name'),
     email: formData.get('email'),
@@ -74,10 +70,10 @@ export async function submitContactForm(
 
   if (!validatedFields.success) {
     const errorMap = validatedFields.error.flatten().fieldErrors;
-    let message = t('validationError');
-    if (errorMap.name) message = t('nameError');
-    else if (errorMap.email) message = t('emailError');
-    else if (errorMap.message) message = t('messageError');
+    let message = 'Error de validación.';
+    if (errorMap.name) message = errorMap.name[0];
+    else if (errorMap.email) message = errorMap.email[0];
+    else if (errorMap.message) message = errorMap.message[0];
     
     return {
       message: message,
@@ -90,7 +86,7 @@ export async function submitContactForm(
   console.log('New contact form submission:', validatedFields.data);
 
   return {
-    message: t('submitSuccess'),
+    message: '¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.',
     success: true,
   };
 }

@@ -2,30 +2,19 @@
 
 import {useState, useEffect} from 'react';
 import Link from 'next/link';
-import {Menu, Code, Globe} from 'lucide-react';
+import {Menu, Code} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Sheet, SheetContent, SheetTrigger, SheetClose} from '@/components/ui/sheet';
 import {cn} from '@/lib/utils';
-import {useTranslations} from 'next-intl';
-import {usePathname, useRouter} from 'next-intl/client';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 
 export function Header() {
-  const t = useTranslations('Header');
   const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
-  const router = useRouter();
 
   const navLinks = [
-    {href: '#servicios', label: t('services')},
-    {href: '#proyectos', label: t('projects')},
-    {href: '#sobre-mi', label: t('about')},
-    {href: '#contacto', label: t('contact')},
+    {href: '#servicios', label: 'Servicios'},
+    {href: '#proyectos', label: 'Proyectos'},
+    {href: '#sobre-mi', label: 'Sobre Mí'},
+    {href: '#contacto', label: 'Contacto'},
   ];
 
   useEffect(() => {
@@ -37,10 +26,6 @@ export function Header() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  
-  const handleLocaleChange = (locale: string) => {
-    router.replace(pathname, {locale});
-  };
 
   return (
     <header
@@ -63,37 +48,15 @@ export function Header() {
             </Link>
           ))}
           <Button asChild>
-            <Link href="#contacto">{t('freeConsultation')}</Link>
+            <Link href="#contacto">Consulta Gratuita</Link>
           </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Globe className="h-5 w-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => handleLocaleChange('en')}>English</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleLocaleChange('es')}>Español</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </nav>
         <div className="md:hidden flex items-center gap-2">
-           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Globe className="h-5 w-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => handleLocaleChange('en')}>English</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleLocaleChange('es')}>Español</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
-                <span className="sr-only">{t('openMenu')}</span>
+                <span className="sr-only">Abrir menú</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-full max-w-xs bg-background p-6 flex flex-col">
@@ -117,7 +80,7 @@ export function Header() {
               <div className="mt-auto border-t pt-6">
                 <SheetClose asChild>
                   <Button asChild size="lg" className="w-full">
-                    <Link href="#contacto">{t('freeConsultation')}</Link>
+                    <Link href="#contacto">Consulta Gratuita</Link>
                   </Button>
                 </SheetClose>
               </div>

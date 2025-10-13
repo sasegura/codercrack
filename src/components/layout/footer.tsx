@@ -1,10 +1,8 @@
 'use client';
 import Link from 'next/link';
 import { Github, Linkedin, Twitter, Code } from 'lucide-react';
-import {useTranslations} from 'next-intl';
 
 export function Footer() {
-  const t = useTranslations('Footer');
   return (
     <footer className="bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 md:px-6 py-8">
@@ -14,7 +12,7 @@ export function Footer() {
                 React Edge
             </Link>
           <p className="text-sm text-center md:text-left">
-            &copy; {new Date().getFullYear()} React Edge. {t('rights')}
+            &copy; {new Date().getFullYear()} React Edge. Todos los derechos reservados.
           </p>
           <div className="flex gap-4">
             <Link href="#" aria-label="GitHub" className="text-secondary-foreground hover:text-primary transition-colors">
