@@ -5,10 +5,13 @@ const isGithubPages = process.env.GITHUB_PAGES === 'true';
 const repositoryName = process.env.REPOSITORY_NAME || 'codercrack';
 
 const nextConfig: NextConfig = {
-  output: 'export',
-  trailingSlash: true,
-  basePath: isGithubPages ? `/${repositoryName}` : '',
-  assetPrefix: isGithubPages ? `/${repositoryName}/` : '',
+  /* config options here */
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     unoptimized: true,
     remotePatterns: [

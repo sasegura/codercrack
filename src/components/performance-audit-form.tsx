@@ -1,20 +1,28 @@
 'use client';
 
-import { useActionState } from 'react';
-import { useFormStatus } from 'react-dom';
-import { runPerformanceAudit, type PerformanceAuditState } from '@/app/actions';
+import { useState, useTransition } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Loader2, Sparkles } from 'lucide-react';
+import { generatePerformanceReport } from '@/ai/flows/generate-performance-report';
+import { z } from 'zod';
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
+const auditUrlSchema = z.object({
+  url: z.string().url("Please enter a valid URL."),
+});
 
+interface PerformanceAuditState {
+    message: string | null;
+    report: string | null;
+    success: boolean;
+}
+
+function SubmitButton({ isPending }: { isPending: boolean }) {
   return (
-    <Button type="submit" disabled={pending} className="w-full sm:w-auto">
-      {pending ? (
+    <Button type="submit" disabled={isPending} className="w-full sm:w-auto">
+      {isPending ? (
         <>
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
           Analyzing...
@@ -27,13 +35,49 @@ function SubmitButton() {
 }
 
 export default function PerformanceAuditForm() {
-  const initialState: PerformanceAuditState = { message: null, report: null, success: false };
-  const [state, dispatch] = useActionState(runPerformanceAudit, initialState);
+  const [isPending, startTransition] = useTransition();
+  const [state, setState] = useState<PerformanceAuditState>({ message: null, report: null, success: false });
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    
+    startTransition(async () => {
+        const validatedFields = auditUrlSchema.safeParse({
+            url: formData.get('url'),
+        });
+
+        if (!validatedFields.success) {
+            setState({
+                message: "Please enter a valid URL.",
+                report: null,
+                success: false,
+            });
+            return;
+        }
+
+        try {
+            const { report } = await generatePerformanceReport({ url: validatedFields.data.url });
+            setState({
+                message: "Report generated successfully.",
+                report: report,
+                success: true,
+            });
+        } catch (e: any) {
+            console.error(e);
+            setState({
+                message: "An error occurred while generating the report. Please try again.",
+                report: null,
+                success: false,
+            });
+        }
+    });
+  }
 
   return (
     <div className="space-y-6">
       <Card className="max-w-3xl mx-auto bg-card shadow-2xl shadow-primary/10">
-        <form action={dispatch}>
+        <form onSubmit={handleSubmit}>
           <CardHeader className="text-center">
             <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit mb-4">
               <Sparkles className="h-8 w-8 text-primary" />
@@ -48,8 +92,9 @@ export default function PerformanceAuditForm() {
                 placeholder="https://example.com"
                 required
                 className="flex-grow text-base"
+                disabled={isPending}
               />
-              <SubmitButton />
+              <SubmitButton isPending={isPending} />
             </div>
           </CardContent>
           <CardFooter>
