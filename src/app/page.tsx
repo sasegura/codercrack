@@ -14,27 +14,27 @@ import Link from 'next/link';
 export default function Home() {
 
   const services = [
-    { icon: Codepen, title: "Sitios Web y Portfolios", description: "Presencia online profesional con sitios estáticos o dinámicos de alto rendimiento." },
-    { icon: Rocket, title: "Landing Pages de Alta Conversión", description: "Páginas de destino optimizadas para velocidad y conversión en campañas de marketing." },
-    { icon: LayoutDashboard, title: "Aplicaciones Web (SPAs)", description: "Herramientas internas, dashboards y paneles de administración con React y Next.js." },
-    { icon: Gauge, title: "Optimización de Rendimiento", description: "Mejora de velocidad, accesibilidad y rendimiento general de sitios web existentes." },
-    { icon: Replace, title: "Migraciones y Refactorización", description: "Actualización de sitios lentos a tecnologías modernas como React y Next.js." },
-    { icon: Library, title: "Sistemas de Diseño UI", description: "Librerías de componentes reutilizables para estandarizar estilos y acelerar el desarrollo." },
-    { icon: Plug, title: "Integraciones Complejas", description: "Conexión con APIs, e-commerce, pasarelas de pago y sistemas de autenticación." },
-    { icon: Users, title: "Servicios White Label", description: "Colaboración y subcontratación de desarrollo frontend para agencias digitales." },
-    { icon: Wrench, title: "Mantenimiento y Soporte", description: "Mejoras incrementales, soporte y actualizaciones post-entrega." },
+    { icon: Codepen, title: "Websites & Portfolios", description: "Professional online presence with high-performance static or dynamic sites." },
+    { icon: Rocket, title: "High-Conversion Landing Pages", description: "Landing pages optimized for speed and conversion in marketing campaigns." },
+    { icon: LayoutDashboard, title: "Web Applications (SPAs)", description: "Internal tools, dashboards, and admin panels with React and Next.js." },
+    { icon: Gauge, title: "Performance Optimization", description: "Improving speed, accessibility, and overall performance of existing websites." },
+    { icon: Replace, title: "Migrations & Refactoring", description: "Updating slow sites to modern technologies like React and Next.js." },
+    { icon: Library, title: "UI Design Systems", description: "Reusable component libraries to standardize styles and accelerate development." },
+    { icon: Plug, title: "Complex Integrations", description: "Connection with APIs, e-commerce, payment gateways, and authentication systems." },
+    { icon: Users, title: "White Label Services", description: "Collaboration and outsourcing of frontend development for digital agencies." },
+    { icon: Wrench, title: "Maintenance & Support", description: "Incremental improvements, support, and post-delivery updates." },
   ];
 
   const projects = [
-    { id: "portfolio-1", title: "Dashboard SaaS", description: "Una plataforma de análisis de datos para startups, con visualizaciones interactivas y rendimiento en tiempo real.", tags: ["Next.js", "Tailwind CSS", "Recharts", "Firebase"] },
-    { id: "portfolio-2", title: "Landing Page para App Móvil", description: "Página de destino de alta conversión para una nueva aplicación móvil, logrando un aumento del 40% en descargas.", tags: ["React", "Gatsby", "Contentful", "Framer Motion"] },
-    { id: "portfolio-3", title: "E-commerce de Moda", description: "Tienda online con un diseño minimalista, integración con Stripe y una experiencia de compra fluida.", tags: ["Next.js", "Shopify API", "Stripe", "Vercel"] },
+    { id: "portfolio-1", title: "SaaS Dashboard", description: "A data analytics platform for startups, with interactive visualizations and real-time performance.", tags: ["Next.js", "Tailwind CSS", "Recharts", "Firebase"] },
+    { id: "portfolio-2", title: "Landing Page for Mobile App", description: "A high-conversion landing page for a new mobile app, achieving a 40% increase in downloads.", tags: ["React", "Gatsby", "Contentful", "Framer Motion"] },
+    { id: "portfolio-3", title: "Fashion E-commerce", description: "Online store with a minimalist design, Stripe integration, and a smooth shopping experience.", tags: ["Next.js", "Shopify API", "Stripe", "Vercel"] },
   ];
 
   const testimonials = [
-    { name: "Ana Pérez", company: "CEO de TechFlow", quote: "El equipo de React Edge transformó nuestra idea en una aplicación web funcional y escalable. Su experiencia en React es inigualable." },
-    { name: "Carlos Ruiz", company: "Director de Marketing en Innovate", quote: "La nueva landing page ha superado todas nuestras expectativas. La velocidad de carga es increíble y las conversiones se han disparado." },
-    { name: "Laura Gómez", company: "Fundadora de Creative Co.", quote: "Trabajar con ellos fue un placer. Entendieron nuestra visión a la perfección y entregaron un sitio web impecable y profesional." },
+    { name: "Ana Perez", company: "CEO of TechFlow", quote: "The React Edge team transformed our idea into a functional and scalable web application. Their expertise in React is unmatched." },
+    { name: "Carlos Ruiz", company: "Marketing Director at Innovate", quote: "The new landing page has exceeded all our expectations. The loading speed is incredible, and conversions have skyrocketed." },
+    { name: "Laura Gomez", company: "Founder of Creative Co.", quote: "Working with them was a pleasure. They understood our vision perfectly and delivered a flawless and professional website." },
   ];
 
   const aboutMeImage = PlaceHolderImages.find(p => p.id === 'about-me');
@@ -46,22 +46,22 @@ export default function Home() {
          <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20 z-0"></div>
         <div className="container px-4 md:px-6 z-10 relative">
           <Badge variant="outline" className="mb-4 bg-primary/10 border-primary/20 text-primary font-medium">
-            Desarrollo Frontend con React.js y Next.js
+            Frontend Development with React.js and Next.js
           </Badge>
           <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
-            Desarrollo Frontend de Alto Impacto
+            High-Impact Frontend Development
           </h1>
           <p className="max-w-3xl mx-auto mt-6 text-lg md:text-xl text-muted-foreground">
-            Creamos aplicaciones web rápidas, fiables y con una experiencia de usuario excepcional que impulsan el crecimiento de tu negocio.
+            We create fast, reliable web applications with an exceptional user experience that drive your business growth.
           </p>
           <div className="mt-8 flex justify-center gap-4 flex-wrap">
             <Button size="lg" asChild>
-              <Link href="#proyectos">
-                Ver Proyectos <ArrowRight className="ml-2 h-5 w-5" />
+              <Link href="#projects">
+                View Projects <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="#lead-form">Consulta Gratuita</Link>
+              <Link href="#lead-form">Free Consultation</Link>
             </Button>
           </div>
         </div>
@@ -71,9 +71,9 @@ export default function Home() {
       <section id="servicios" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Nuestros Servicios</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Our Services</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
-              Soluciones a medida para llevar tu presencia digital al siguiente nivel.
+              Custom solutions to take your digital presence to the next level.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -98,9 +98,9 @@ export default function Home() {
       <section id="lead-form" className="py-20 md:py-28 bg-background">
         <div className="container px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Cuéntame sobre tu Proyecto</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Tell me about your Project</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
-              Completa estos breves pasos para que pueda entender mejor tus necesidades.
+              Complete these short steps so I can better understand your needs.
             </p>
           </div>
           <LeadFormStepper />
@@ -118,9 +118,9 @@ export default function Home() {
       <section id="proyectos" className="py-20 md:py-28 bg-background">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Proyectos Destacados</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Featured Projects</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
-              Una muestra de nuestro trabajo y el impacto que generamos.
+              A showcase of our work and the impact we create.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -146,7 +146,7 @@ export default function Home() {
       <section id="testimonios" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Lo que dicen nuestros clientes</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">What our clients say</h2>
           </div>
           <Carousel opts={{ loop: true }} className="max-w-4xl mx-auto">
             <CarouselContent>
@@ -184,14 +184,14 @@ export default function Home() {
               {aboutMeImage && <Image src={aboutMeImage.imageUrl} alt="Frontend Developer" data-ai-hint={aboutMeImage.imageHint} fill className="rounded-lg object-cover shadow-lg shadow-primary/10"/>}
             </div>
             <div>
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground mb-4">Sobre Mí</h2>
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground mb-4">About Me</h2>
               <p className="text-muted-foreground mb-6 text-lg">
-                Soy un desarrollador frontend apasionado por construir interfaces de usuario modernas, intuitivas y de alto rendimiento. Con años de experiencia en el ecosistema de React, me especializo en transformar ideas complejas en realidades digitales.
+                I am a passionate frontend developer dedicated to building modern, intuitive, and high-performance user interfaces. With years of experience in the React ecosystem, I specialize in transforming complex ideas into digital realities.
               </p>
               <div className="space-y-4">
-                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">Experiencia en React.js y Next.js:</span> Desarrollo de aplicaciones robustas y optimizadas para SEO.</p></div>
-                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">Enfoque en UX/UI:</span> Colaboración estrecha con diseñadores para crear experiencias de usuario memorables.</p></div>
-                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">Optimización de Rendimiento:</span> Obsesionado con la velocidad de carga y la eficiencia del frontend.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">Expertise in React.js & Next.js:</span> Development of robust and SEO-optimized applications.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">Focus on UX/UI:</span> Close collaboration with designers to create memorable user experiences.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">Performance Optimization:</span> Obsessed with loading speed and frontend efficiency.</p></div>
               </div>
             </div>
           </div>
@@ -202,9 +202,9 @@ export default function Home() {
       <section id="contacto" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="max-w-2xl mx-auto text-center">
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">¿Listo para empezar tu proyecto?</h2>
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Ready to start your project?</h2>
               <p className="max-w-2xl mx-auto mt-4 mb-8 text-muted-foreground">
-                Contáctame para una consulta gratuita. Hablemos de cómo puedo ayudarte a alcanzar tus objetivos.
+                Contact me for a free consultation. Let's talk about how I can help you achieve your goals.
               </p>
               <ContactForm />
           </div>

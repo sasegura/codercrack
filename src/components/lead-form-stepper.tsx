@@ -16,20 +16,20 @@ import { useToast } from '@/hooks/use-toast';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const step1Schema = z.object({
-  projectType: z.string().min(1, 'Debes seleccionar un tipo de proyecto.'),
+  projectType: z.string().min(1, 'You must select a project type.'),
 });
 
 const step2Schema = z.object({
-  hasDesign: z.enum(['si', 'no'], { required_error: 'Debes seleccionar una opción.' }),
-  deadline: z.string().min(1, 'Debes seleccionar un plazo.'),
-  budget: z.string().min(1, 'Debes seleccionar un presupuesto.'),
+  hasDesign: z.enum(['yes', 'no'], { required_error: 'You must select an option.' }),
+  deadline: z.string().min(1, 'You must select a deadline.'),
+  budget: z.string().min(1, 'You must select a budget.'),
 });
 
 const step3Schema = z.object({
-  name: z.string().min(2, 'El nombre debe tener al menos 2 caracteres.'),
-  email: z.string().email('Por favor, introduce un email válido.'),
+  name: z.string().min(2, 'Name must be at least 2 characters long.'),
+  email: z.string().email('Please enter a valid email address.'),
   company: z.string().optional(),
-  message: z.string().min(10, 'El mensaje debe tener al menos 10 caracteres.'),
+  message: z.string().min(10, 'Message must be at least 10 characters long.'),
 });
 
 type FormData = z.infer<typeof step1Schema> & z.infer<typeof step2Schema> & z.infer<typeof step3Schema>;
@@ -42,9 +42,9 @@ export function LeadFormStepper() {
   const { toast } = useToast();
 
   const steps = [
-    { id: '01', name: 'Tipo de proyecto', fields: ['projectType'] },
-    { id: '02', name: 'Detalles', fields: ['hasDesign', 'deadline', 'budget'] },
-    { id: '03', name: 'Contacto', fields: ['name', 'email', 'company', 'message'] },
+    { id: '01', name: 'Project Type', fields: ['projectType'] },
+    { id: '02', name: 'Details', fields: ['hasDesign', 'deadline', 'budget'] },
+    { id: '03', name: 'Contact', fields: ['name', 'email', 'company', 'message'] },
   ];
 
   const currentValidationSchema = 
@@ -84,8 +84,8 @@ export function LeadFormStepper() {
     setCurrentStep(prev => prev + 1);
 
     toast({
-      title: '¡Formulario enviado!',
-      description: 'Gracias por tu interés. Me pondré en contacto contigo pronto.',
+      title: 'Form Submitted!',
+      description: 'Thank you for your interest. I will get back to you soon.',
     });
   };
 
@@ -135,8 +135,8 @@ export function LeadFormStepper() {
     return (
         <div className="flex flex-col items-center justify-center text-center p-8 bg-secondary rounded-lg min-h-[500px]">
             <PartyPopper className="h-16 w-16 text-primary mb-4" />
-            <h2 className="font-headline text-2xl font-semibold text-foreground mb-2">¡Gracias por tu interés!</h2>
-            <p className="text-muted-foreground max-w-md">He recibido tu solicitud y me pondré en contacto contigo en menos de 24 horas para hablar sobre tu proyecto.</p>
+            <h2 className="font-headline text-2xl font-semibold text-foreground mb-2">Thank you for your interest!</h2>
+            <p className="text-muted-foreground max-w-md">I have received your request and will contact you within 24 hours to discuss your project.</p>
         </div>
     );
   }
@@ -186,13 +186,13 @@ export function LeadFormStepper() {
                     control={control}
                     render={({ field }) => (
                       <RadioGroup {...field} onValueChange={field.onChange} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <h3 className="sm:col-span-2 font-semibold text-lg">¿Qué tipo de proyecto tienes en mente?</h3>
+                        <h3 className="sm:col-span-2 font-semibold text-lg">What type of project do you have in mind?</h3>
                         {[
-                          { value: "corporate-website", label: 'Sitio web corporativo' },
-                          { value: "ecommerce", label: 'Tienda online' },
-                          { value: "custom-webapp", label: 'Web app personalizada' },
-                          { value: "landing-page", label: 'Landing page' },
-                          { value: "other", label: 'Otro' }
+                          { value: "corporate-website", label: 'Corporate Website' },
+                          { value: "ecommerce", label: 'E-commerce Store' },
+                          { value: "custom-webapp", label: 'Custom Web App' },
+                          { value: "landing-page", label: 'Landing Page' },
+                          { value: "other", label: 'Other' }
                         ].map(option => (
                           <Label key={option.value} htmlFor={option.value} className={cn(
                             "flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary",
@@ -224,10 +224,11 @@ export function LeadFormStepper() {
                       control={control}
                       render={({ field }) => (
                         <RadioGroup {...field} onValueChange={field.onChange} className="space-y-2">
-                          <Label className="text-lg">¿Tienes un diseño UI/UX ya hecho?</Label>
+                          <Label className="text-lg">Do you have a UI/UX design already?
+</Label>
                           <div className="flex gap-4">
                               <Label htmlFor="design-yes" className="flex items-center gap-2 border border-border rounded-md p-3 px-4 has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                                  <RadioGroupItem value="si" id="design-yes" /> Sí
+                                  <RadioGroupItem value="yes" id="design-yes" /> Yes
                               </Label>
                               <Label htmlFor="design-no" className="flex items-center gap-2 border border-border rounded-md p-3 px-4 has-[:checked]:border-primary has-[:checked]:bg-primary/10">
                                   <RadioGroupItem value="no" id="design-no" /> No
@@ -242,9 +243,9 @@ export function LeadFormStepper() {
                       control={control}
                       render={({ field }) => (
                         <RadioGroup {...field} onValueChange={field.onChange} className="space-y-2">
-                          <Label className="text-lg">¿Cuál es tu plazo estimado?</Label>
+                          <Label className="text-lg">What is your estimated deadline?</Label>
                           <div className="flex flex-wrap gap-4">
-                            {['~1 mes', '2-3 meses', 'Flexible'].map(val => (
+                            {['~1 month', '2-3 months', 'Flexible'].map(val => (
                               <Label key={val} htmlFor={`deadline-${val}`} className="flex items-center gap-2 border border-border rounded-md p-3 px-4 has-[:checked]:border-primary has-[:checked]:bg-primary/10">
                                 <RadioGroupItem value={val} id={`deadline-${val}`} /> {val}
                               </Label>
@@ -259,7 +260,7 @@ export function LeadFormStepper() {
                       control={control}
                       render={({ field }) => (
                           <RadioGroup {...field} onValueChange={field.onChange} className="space-y-2">
-                              <Label className="text-lg">¿Cuál es tu presupuesto aproximado?</Label>
+                              <Label className="text-lg">What is your approximate budget?</Label>
                               <div className="flex flex-wrap gap-4">
                                   {["<$2k", "$2k-$5k", "$5k-$10k", ">$10k"].map(val => (
                                       <Label key={val} htmlFor={`budget-${val}`} className="flex items-center gap-2 border border-border rounded-md p-3 px-4 has-[:checked]:border-primary has-[:checked]:bg-primary/10">
@@ -287,7 +288,7 @@ export function LeadFormStepper() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <Controller name="name" control={control} render={({ field }) => (
                           <div className="space-y-2">
-                              <Label htmlFor="name">Nombre</Label>
+                              <Label htmlFor="name">Name</Label>
                               <Input id="name" {...field} />
                               {errors.name && <p className="text-destructive">{errors.name.message}</p>}
                           </div>
@@ -301,13 +302,13 @@ export function LeadFormStepper() {
                       )}/>
                       <Controller name="company" control={control} render={({ field }) => (
                           <div className="space-y-2 sm:col-span-2">
-                              <Label htmlFor="company">Empresa (Opcional)</Label>
+                              <Label htmlFor="company">Company (Optional)</Label>
                               <Input id="company" {...field} />
                           </div>
                       )}/>
                       <Controller name="message" control={control} render={({ field }) => (
                           <div className="space-y-2 sm:col-span-2">
-                              <Label htmlFor="message">Mensaje o descripción adicional</Label>
+                              <Label htmlFor="message">Message or additional description</Label>
                               <Textarea id="message" rows={4} {...field} />
                               {errors.message && <p className="text-destructive">{errors.message.message}</p>}
                           </div>
@@ -319,20 +320,20 @@ export function LeadFormStepper() {
         </CardContent>
         <CardFooter className="flex justify-between">
           <Button type="button" variant="outline" onClick={prevStep} disabled={currentStep === 0}>
-            Anterior
+            Previous
           </Button>
           {currentStep < steps.length - 1 ? (
             <Button type="button" onClick={nextStep}>
-              Siguiente <ArrowRight className="ml-2 h-4 w-4" />
+              Next <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           ) : (
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Enviando...
+                  Sending...
                 </>
-              ) : 'Enviar Solicitud'}
+              ) : 'Submit Request'}
             </Button>
           )}
         </CardFooter>

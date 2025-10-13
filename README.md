@@ -1,58 +1,58 @@
-# React Edge - Portfolio de Desarrollador Frontend
+# React Edge - Frontend Developer Portfolio
 
-Este es el repositorio del proyecto "React Edge", una plantilla de portfolio profesional para desarrolladores frontend especializados en React y Next.js. El sitio web está diseñado para mostrar servicios, proyectos destacados, testimonios de clientes y capturar leads a través de formularios interactivos.
+This is the repository for the "React Edge" project, a professional portfolio template for frontend developers specializing in React and Next.js. The website is designed to showcase services, featured projects, client testimonials, and capture leads through interactive forms.
 
-Además, incluye una herramienta de auditoría de rendimiento web gratuita potenciada por IA generativa (Genkit) como un lead magnet para atraer a potenciales clientes.
+Additionally, it includes a free web performance audit tool powered by generative AI (Genkit) as a lead magnet to attract potential clients.
 
-## Tecnologías Utilizadas
+## Technologies Used
 
-El proyecto está construido con un stack de tecnologías modernas y eficientes:
+The project is built with a stack of modern and efficient technologies:
 
-- **Framework:** [Next.js](https://nextjs.org/) (con App Router)
-- **Lenguaje:** [TypeScript](https://www.typescriptlang.org/)
+- **Framework:** [Next.js](https://nextjs.org/) (with App Router)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **UI Framework:** [React](https://react.dev/)
-- **Estilos:** [Tailwind CSS](https://tailwindcss.com/)
-- **Componentes UI:** [ShadCN UI](https://ui.shadcn.com/)
-- **Animaciones:** [Framer Motion](https://www.framer.com/motion/)
-- **Formularios:** [React Hook Form](https://react-hook-form.com/) y [Zod](https://zod.dev/) para validación
-- **Iconos:** [Lucide React](https://lucide.dev/)
-- **IA Generativa:** [Genkit (Google AI)](https://firebase.google.com/docs/genkit) para la función de auditoría de rendimiento.
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components:** [ShadCN UI](https://ui.shadcn.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Forms:** [React Hook Form](https://react-hook-form.com/) and [Zod](https://zod.dev/) for validation
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Generative AI:** [Genkit (Google AI)](https://firebase.google.com/docs/genkit) for the performance audit feature.
 
-## Características Principales
+## Main Features
 
-- **Diseño Moderno y Responsivo:** Una interfaz limpia y profesional que se adapta a cualquier dispositivo.
-- **Secciones Clave del Portfolio:**
-  - **Servicios:** Muestra los servicios ofrecidos con iconos y descripciones claras.
-  - **Proyectos:** Galería de proyectos con imágenes, descripciones y etiquetas de tecnologías.
-  - **Testimonios:** Carrusel interactivo para mostrar la opinión de los clientes.
-  - **Sobre Mí:** Una sección personal para presentarte profesionalmente.
-- **Captura de Leads Avanzada:**
-  - **Formulario por Pasos:** Un stepper interactivo para guiar al cliente potencial a través de la solicitud de un presupuesto.
-  - **Formulario de Contacto Simple:** Para consultas rápidas y directas.
-- **Auditoría de Rendimiento con IA:** Una herramienta que utiliza Genkit para analizar una URL y generar un informe de rendimiento, actuando como un potente imán de prospectos.
-- **Optimizado para SEO:** Construido con Next.js y buenas prácticas para un mejor posicionamiento en buscadores.
+- **Modern and Responsive Design:** A clean and professional interface that adapts to any device.
+- **Key Portfolio Sections:**
+  - **Services:** Displays the services offered with clear icons and descriptions.
+  - **Projects:** Project gallery with images, descriptions, and technology tags.
+  - **Testimonials:** Interactive carousel to display client feedback.
+  - **About Me:** A personal section to introduce yourself professionally.
+- **Advanced Lead Capture:**
+  - **Step-by-Step Form:** An interactive stepper to guide potential clients through requesting a quote.
+  - **Simple Contact Form:** For quick and direct inquiries.
+- **AI-Powered Performance Audit:** A tool that uses Genkit to analyze a URL and generate a performance report, acting as a powerful lead magnet.
+- **SEO Optimized:** Built with Next.js and best practices for better search engine rankings.
 
-## Cómo Empezar
+## Getting Started
 
-1.  **Instalar dependencias:**
+1.  **Install dependencies:**
     ```bash
     npm install
     ```
 
-2.  **Ejecutar el servidor de desarrollo:**
+2.  **Run the development server:**
     ```bash
     npm run dev
     ```
-    La aplicación estará disponible en `http://localhost:9002`.
+    The application will be available at `http://localhost:9002`.
 
-3.  **Ejecutar el entorno de desarrollo de Genkit (para la IA):**
-    En una terminal separada, ejecuta:
+3.  **Run the Genkit development environment (for the AI):**
+    In a separate terminal, run:
     ```bash
     npm run genkit:dev
     ```
-    Esto iniciará el inspector de flujos de Genkit.
+    This will start the Genkit flow inspector.
 
-4.  **Construir para producción:**
+4.  **Build for production:**
     ```bash
     npm run build
     ```

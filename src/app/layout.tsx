@@ -18,9 +18,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'React Edge | Desarrollo Frontend de Alto Impacto',
-  description: 'Creamos aplicaciones web rápidas, fiables y con una experiencia de usuario excepcional que impulsan el crecimiento de tu negocio.',
-  keywords: ['Desarrollador React', 'rendimiento frontend React', 'aplicaciones web React', 'desarrollador Next.js', 'desarrollador freelance'],
+  title: 'React Edge | High-Impact Frontend Development',
+  description: 'We create fast, reliable web applications with an exceptional user experience that drive business growth.',
+  keywords: ['React Developer', 'frontend performance React', 'React web applications', 'Next.js developer', 'freelance developer'],
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${spaceGrotesk.variable} ${inter.variable} dark !scroll-smooth`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} dark !scroll-smooth`}>
       <body className="font-body antialiased">
           <Header />
           <main className="bg-background">

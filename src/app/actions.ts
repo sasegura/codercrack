@@ -5,9 +5,9 @@ import { z } from 'zod';
 
 // Contact Form
 const contactSchema = z.object({
-    name: z.string().min(2, 'El nombre debe tener al menos 2 caracteres.'),
-    email: z.string().email('Por favor, introduce un email válido.'),
-    message: z.string().min(10, 'El mensaje debe tener al menos 10 caracteres.'),
+    name: z.string().min(2, 'Name must be at least 2 characters long.'),
+    email: z.string().email('Please enter a valid email address.'),
+    message: z.string().min(10, 'Message must be at least 10 characters long.'),
 });
 
 export interface ContactFormState {
@@ -24,7 +24,7 @@ export async function submitContactForm(prevState: ContactFormState, formData: F
 
     if (!validatedFields.success) {
         return {
-            message: validatedFields.error.flatten().fieldErrors.message?.[0] ?? 'Error de validación.',
+            message: validatedFields.error.flatten().fieldErrors.message?.[0] ?? 'Validation error.',
             success: false,
         };
     }
@@ -32,7 +32,7 @@ export async function submitContactForm(prevState: ContactFormState, formData: F
     console.log('Contact form submitted:', validatedFields.data);
 
     return {
-        message: '¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.',
+        message: 'Thank you for your message! I will get back to you soon.',
         success: true,
     };
 }
@@ -40,7 +40,7 @@ export async function submitContactForm(prevState: ContactFormState, formData: F
 
 // Performance Audit Form
 const auditUrlSchema = z.object({
-  url: z.string().url("Por favor, introduce una URL válida."),
+  url: z.string().url("Please enter a valid URL."),
 });
 
 export interface PerformanceAuditState {
@@ -56,7 +56,7 @@ export async function runPerformanceAudit(prevState: PerformanceAuditState, form
 
     if (!validatedFields.success) {
         return {
-            message: "Por favor, introduce una URL válida.",
+            message: "Please enter a valid URL.",
             report: null,
             success: false,
         };
@@ -65,14 +65,14 @@ export async function runPerformanceAudit(prevState: PerformanceAuditState, form
     try {
         const { report } = await generatePerformanceReport({ url: validatedFields.data.url });
         return {
-            message: "Reporte generado exitosamente.",
+            message: "Report generated successfully.",
             report: report,
             success: true,
         };
     } catch (e: any) {
         console.error(e);
         return {
-            message: "Ha ocurrido un error al generar el reporte. Por favor, inténtalo de nuevo.",
+            message: "An error occurred while generating the report. Please try again.",
             report: null,
             success: false,
         };

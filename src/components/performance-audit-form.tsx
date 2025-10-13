@@ -17,10 +17,10 @@ function SubmitButton() {
       {pending ? (
         <>
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          Analizando...
+          Analyzing...
         </>
       ) : (
-        'Generar Reporte'
+        'Generate Report'
       )}
     </Button>
   );
@@ -38,8 +38,8 @@ export default function PerformanceAuditForm() {
             <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit mb-4">
               <Sparkles className="h-8 w-8 text-primary" />
             </div>
-            <CardTitle className="font-headline text-2xl md:text-3xl text-foreground">Auditoría de Rendimiento Gratuita</CardTitle>
-            <CardDescription className="text-base text-muted-foreground">Introduce la URL de tu sitio web para obtener un análisis de rendimiento detallado, identificando cuellos de botella y oportunidades de mejora.</CardDescription>
+            <CardTitle className="font-headline text-2xl md:text-3xl text-foreground">Free Performance Audit</CardTitle>
+            <CardDescription className="text-base text-muted-foreground">Enter your website's URL to get a detailed performance analysis, identifying bottlenecks and improvement opportunities.</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col sm:flex-row gap-2">
@@ -53,7 +53,7 @@ export default function PerformanceAuditForm() {
             </div>
           </CardContent>
           <CardFooter>
-            <p className="text-sm text-muted-foreground w-full text-center">Potenciado por IA Generativa</p>
+            <p className="text-sm text-muted-foreground w-full text-center">Powered by Generative AI</p>
           </CardFooter>
         </form>
       </Card>
@@ -68,7 +68,7 @@ export default function PerformanceAuditForm() {
       {state.report && (
         <Card className="max-w-3xl mx-auto mt-8">
           <CardHeader>
-            <CardTitle>Resultados del Análisis</CardTitle>
+            <CardTitle>Analysis Results</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-headings:text-foreground prose-strong:text-foreground whitespace-pre-wrap">

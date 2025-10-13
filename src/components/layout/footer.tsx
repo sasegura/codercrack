@@ -12,7 +12,7 @@ export function Footer() {
                 React Edge
             </Link>
           <p className="text-sm text-center md:text-left">
-            &copy; {new Date().getFullYear()} React Edge. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} React Edge. All rights reserved.
           </p>
           <div className="flex gap-4">
             <Link href="#" aria-label="GitHub" className="text-secondary-foreground hover:text-primary transition-colors">

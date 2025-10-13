@@ -17,10 +17,10 @@ function SubmitButton() {
       {pending ? (
         <>
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          Enviando...
+          Sending...
         </>
       ) : (
-        'Enviar Mensaje'
+        'Send Message'
       )}
     </Button>
   );
@@ -35,7 +35,7 @@ export function ContactForm() {
   useEffect(() => {
     if (state.message) {
       toast({
-        title: state.success ? 'Mensaje Enviado' : 'Error',
+        title: state.success ? 'Message Sent' : 'Error',
         description: state.message,
         variant: state.success ? 'default' : 'destructive',
       });
@@ -50,14 +50,14 @@ export function ContactForm() {
       <CardContent className="p-6">
         <form ref={formRef} action={dispatch} className="space-y-4">
           <div className="space-y-2">
-            <Input id="name" name="name" placeholder="Tu nombre" required className="bg-background/50" />
+            <Input id="name" name="name" placeholder="Your name" required className="bg-background/50" />
           </div>
           <div className="space-y-2">
             <Input
               id="email"
               name="email"
               type="email"
-              placeholder="Tu email"
+              placeholder="Your email"
               required
               className="bg-background/50"
             />
@@ -66,7 +66,7 @@ export function ContactForm() {
             <Textarea
               id="message"
               name="message"
-              placeholder="¿En qué puedo ayudarte?"
+              placeholder="How can I help you?"
               required
               rows={5}
               className="bg-background/50"
