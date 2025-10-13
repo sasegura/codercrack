@@ -1,6 +1,5 @@
-'use server';
+'use client';
 
-import { generatePerformanceReport } from '@/ai/flows/generate-performance-report';
 import { z } from 'zod';
 
 // Contact Form
@@ -29,6 +28,9 @@ export async function submitContactForm(prevState: ContactFormState, formData: F
         };
     }
     
+    // Simular delay de red
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
     console.log('Contact form submitted:', validatedFields.data);
 
     return {
@@ -36,7 +38,6 @@ export async function submitContactForm(prevState: ContactFormState, formData: F
         success: true,
     };
 }
-
 
 // Performance Audit Form
 const auditUrlSchema = z.object({
@@ -63,10 +64,39 @@ export async function runPerformanceAudit(prevState: PerformanceAuditState, form
     }
 
     try {
-        const { report } = await generatePerformanceReport({ url: validatedFields.data.url });
+        // Simular delay de procesamiento
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        // Generar reporte simulado
+        const mockReport = `# Performance Audit Report for ${validatedFields.data.url}
+
+## Overview
+This is a simulated performance audit report. In a real implementation, this would analyze:
+- Page load times
+- Core Web Vitals
+- Resource optimization opportunities
+- Mobile performance
+- SEO factors
+
+## Key Findings
+- **Lighthouse Score**: 85/100
+- **First Contentful Paint**: 1.2s
+- **Largest Contentful Paint**: 2.1s
+- **Cumulative Layout Shift**: 0.05
+
+## Recommendations
+1. Optimize images (WebP format, lazy loading)
+2. Minimize CSS and JavaScript
+3. Enable compression
+4. Use a CDN
+5. Implement caching strategies
+
+## Next Steps
+Consider implementing these optimizations to improve your site's performance and user experience.`;
+
         return {
             message: "Report generated successfully.",
-            report: report,
+            report: mockReport,
             success: true,
         };
     } catch (e: any) {

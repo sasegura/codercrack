@@ -1,14 +1,16 @@
 import type {NextConfig} from 'next';
 
+// Configuración para GitHub Pages
+const isGithubPages = process.env.GITHUB_PAGES === 'true';
+const repositoryName = process.env.REPOSITORY_NAME || 'codercrack';
+
 const nextConfig: NextConfig = {
-  /* config options here */
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  output: 'export',
+  trailingSlash: true,
+  basePath: isGithubPages ? `/${repositoryName}` : '',
+  assetPrefix: isGithubPages ? `/${repositoryName}/` : '',
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -29,6 +31,12 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 

@@ -7,9 +7,13 @@
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
     "build": "NODE_ENV=production next build",
+    "build:gh-pages": "NODE_ENV=production GITHUB_PAGES=true next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy": "npm run build && npm run deploy:gh-pages",
+    "deploy:gh-pages": "npx gh-pages -d out",
+    "deploy:script": "./scripts/deploy.sh"
   },
   "dependencies": {
     "@genkit-ai/google-genai": "^1.20.0",
@@ -61,6 +65,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "genkit-cli": "^1.20.0",
+    "gh-pages": "^6.3.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
