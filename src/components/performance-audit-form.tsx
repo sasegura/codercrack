@@ -30,20 +30,20 @@ export default function PerformanceAuditForm() {
 
   return (
     <div className="space-y-6">
-      <Card className="max-w-3xl mx-auto border-accent shadow-lg">
+      <Card className="max-w-3xl mx-auto bg-secondary border-accent shadow-lg shadow-accent/10">
         <form action={dispatch}>
           <CardHeader className="text-center">
             <div className="mx-auto bg-accent/10 p-3 rounded-full w-fit mb-4">
                 <Sparkles className="h-8 w-8 text-accent" />
             </div>
-            <CardTitle className="font-headline text-2xl md:text-3xl text-primary">Auditoría de Rendimiento Gratuita</CardTitle>
-            <CardDescription className="text-base">
+            <CardTitle className="font-headline text-2xl md:text-3xl text-foreground">Auditoría de Rendimiento Gratuita</CardTitle>
+            <CardDescription className="text-base text-muted-foreground">
               Introduce la URL de tu sitio web para obtener un análisis de rendimiento detallado, identificando cuellos de botella y oportunidades de mejora.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col sm:flex-row gap-2">
-                <Input name="url" placeholder="https://ejemplo.com" required className="flex-grow text-base" />
+                <Input name="url" placeholder="https://ejemplo.com" required className="flex-grow text-base bg-background/50" />
                 <SubmitButton />
             </div>
           </CardContent>
@@ -61,12 +61,12 @@ export default function PerformanceAuditForm() {
       )}
       
       {state.report && (
-        <Card className="max-w-3xl mx-auto">
+        <Card className="max-w-3xl mx-auto bg-secondary">
           <CardHeader>
             <CardTitle>Resultados del Análisis</CardTitle>
           </CardHeader>
           <CardContent>
-            <pre className="bg-secondary p-4 rounded-md text-sm text-secondary-foreground whitespace-pre-wrap font-code">{state.report}</pre>
+            <pre className="bg-background p-4 rounded-md text-sm text-secondary-foreground whitespace-pre-wrap font-code">{state.report}</pre>
           </CardContent>
         </Card>
       )}

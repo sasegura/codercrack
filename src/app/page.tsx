@@ -40,12 +40,13 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 lg:py-40 text-center bg-secondary/50">
+      <section className="relative py-24 md:py-32 lg:py-40 text-center bg-background">
+         <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20 z-0"></div>
         <div className="container px-4 md:px-6 z-10 relative">
-          <Badge variant="outline" className="mb-4 text-accent-foreground bg-accent/20 border-accent/50">
+          <Badge variant="outline" className="mb-4 bg-primary/10 border-primary/20 text-primary font-medium">
             Desarrollo Frontend con React.js y Next.js
           </Badge>
-          <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-primary">
+          <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
             Desarrollo Frontend de Alto Impacto
           </h1>
           <p className="max-w-3xl mx-auto mt-6 text-lg md:text-xl text-muted-foreground">
@@ -65,17 +66,17 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="servicios" className="py-20 md:py-28 bg-background">
+      <section id="servicios" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Nuestros Servicios</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Nuestros Servicios</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
               Soluciones a medida para llevar tu presencia digital al siguiente nivel.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
-              <Card key={service.title} className="flex flex-col text-center items-center hover:shadow-lg transition-shadow duration-300">
+              <Card key={service.title} className="flex flex-col text-center items-center bg-background/50 hover:bg-background/80 transition-all duration-300 hover:-translate-y-1 border-primary/10">
                 <CardHeader className="items-center">
                   <div className="bg-primary/10 p-3 rounded-full mb-4">
                     <service.icon className="h-8 w-8 text-primary" />
@@ -92,17 +93,17 @@ export default function Home() {
       </section>
 
       {/* Performance Audit Section */}
-      <section id="auditoria" className="py-20 md:py-28 bg-secondary/50">
+      <section id="auditoria" className="py-20 md:py-28 bg-background">
           <div className="container px-4 md:px-6">
               <PerformanceAuditForm />
           </div>
       </section>
 
       {/* Portfolio Section */}
-      <section id="proyectos" className="py-20 md:py-28 bg-background">
+      <section id="proyectos" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Proyectos Destacados</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Proyectos Destacados</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
               Una muestra de nuestro trabajo y el impacto que generamos.
             </p>
@@ -111,13 +112,13 @@ export default function Home() {
             {projects.map((project) => {
               const image = PlaceHolderImages.find(p => p.id === project.id);
               return (
-              <Card key={project.title} className="overflow-hidden group">
-                {image && <Image src={image.imageUrl} alt={project.title} width={600} height={400} data-ai-hint={image.imageHint} className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"/>}
+              <Card key={project.title} className="overflow-hidden group bg-background/50 border-primary/10">
+                {image && <div className="overflow-hidden"><Image src={image.imageUrl} alt={project.title} width={600} height={400} data-ai-hint={image.imageHint} className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"/></div>}
                 <CardContent className="p-6">
                   <h3 className="text-xl font-headline font-semibold mb-2">{project.title}</h3>
                   <p className="text-muted-foreground mb-4 text-sm">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
-                    {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                    {project.tags.map(tag => <Badge key={tag} variant="secondary" className="bg-primary/10 text-primary">{tag}</Badge>)}
                   </div>
                 </CardContent>
               </Card>
@@ -127,20 +128,20 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonios" className="py-20 md:py-28 bg-secondary/50">
+      <section id="testimonios" className="py-20 md:py-28 bg-background">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Lo que dicen nuestros clientes</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Lo que dicen nuestros clientes</h2>
           </div>
           <Carousel opts={{ loop: true }} className="max-w-4xl mx-auto">
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index}>
-                  <Card>
+                  <Card className="bg-secondary">
                     <CardContent className="p-8 text-center">
-                      <p className="text-lg italic mb-6">"{testimonial.quote}"</p>
+                      <p className="text-lg italic mb-6 text-foreground/80">"{testimonial.quote}"</p>
                       <div className="flex items-center justify-center">
-                        <Avatar className="h-12 w-12 mr-4">
+                        <Avatar className="h-12 w-12 mr-4 border-2 border-primary/50">
                           <AvatarImage src={`https://picsum.photos/seed/t${index+1}/100/100`} data-ai-hint="person" alt={testimonial.name} />
                           <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                         </Avatar>
@@ -161,14 +162,14 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="sobre-mi" className="py-20 md:py-28 bg-background">
+      <section id="sobre-mi" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-square max-w-md mx-auto">
-              {aboutMeImage && <Image src={aboutMeImage.imageUrl} alt="Desarrollador Frontend" data-ai-hint={aboutMeImage.imageHint} fill className="rounded-lg object-cover shadow-lg"/>}
+              {aboutMeImage && <Image src={aboutMeImage.imageUrl} alt="Desarrollador Frontend" data-ai-hint={aboutMeImage.imageHint} fill className="rounded-lg object-cover shadow-lg shadow-primary/10"/>}
             </div>
             <div>
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary mb-4">Sobre Mí</h2>
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground mb-4">Sobre Mí</h2>
               <p className="text-muted-foreground mb-6 text-lg">
                 Soy un desarrollador frontend apasionado por construir interfaces de usuario modernas, intuitivas y de alto rendimiento. Con años de experiencia en el ecosistema de React, me especializo en transformar ideas complejas en realidades digitales.
               </p>
@@ -183,10 +184,10 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contacto" className="py-20 md:py-28 bg-secondary/50">
+      <section id="contacto" className="py-20 md:py-28 bg-background">
         <div className="container px-4 md:px-6">
           <div className="max-w-2xl mx-auto text-center">
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">¿Listo para empezar tu proyecto?</h2>
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">¿Listo para empezar tu proyecto?</h2>
               <p className="max-w-2xl mx-auto mt-4 mb-8 text-muted-foreground">
                 Contáctame para una consulta gratuita. Hablemos de cómo puedo ayudarte a alcanzar tus objetivos.
               </p>

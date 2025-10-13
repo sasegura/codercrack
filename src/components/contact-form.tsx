@@ -44,17 +44,17 @@ export function ContactForm() {
     }, [state, toast]);
 
     return (
-        <Card>
+        <Card className="bg-secondary border-primary/20">
             <CardContent className="p-6">
                 <form ref={formRef} action={dispatch} className="space-y-4">
                     <div className="space-y-2">
-                        <Input id="name" name="name" placeholder="Tu nombre" required />
+                        <Input id="name" name="name" placeholder="Tu nombre" required className="bg-background/50" />
                     </div>
                     <div className="space-y-2">
-                        <Input id="email" name="email" type="email" placeholder="Tu email" required />
+                        <Input id="email" name="email" type="email" placeholder="Tu email" required className="bg-background/50" />
                     </div>
                     <div className="space-y-2">
-                        <Textarea id="message" name="message" placeholder="¿En qué puedo ayudarte?" required  rows={5}/>
+                        <Textarea id="message" name="message" placeholder="¿En qué puedo ayudarte?" required  rows={5} className="bg-background/50"/>
                     </div>
                     <SubmitButton />
                 </form>
