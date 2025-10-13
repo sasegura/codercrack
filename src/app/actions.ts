@@ -1,10 +1,11 @@
-"use server";
+'use server';
 
-import { generatePerformanceReport } from "@/ai/flows/generate-performance-report";
-import { z } from "zod";
+import {generatePerformanceReport} from '@/ai/flows/generate-performance-report';
+import {z} from 'zod';
+import {getTranslations} from 'next-intl/server';
 
 const performanceAuditSchema = z.object({
-  url: z.string().url({ message: "Por favor, introduce una URL válida." }),
+  url: z.string().url(),
 });
 
 export type PerformanceAuditState = {
@@ -17,29 +18,31 @@ export async function runPerformanceAudit(
   prevState: PerformanceAuditState,
   formData: FormData
 ): Promise<PerformanceAuditState> {
+  const t = await getTranslations('PerformanceAudit');
+
   const validatedFields = performanceAuditSchema.safeParse({
-    url: formData.get("url"),
+    url: formData.get('url'),
   });
 
   if (!validatedFields.success) {
     return {
-      message: validatedFields.error.flatten().fieldErrors.url?.[0] || 'Error de validación.',
+      message: t('invalidURL'),
       report: null,
       success: false,
     };
   }
 
   try {
-    const result = await generatePerformanceReport({ url: validatedFields.data.url });
+    const result = await generatePerformanceReport({url: validatedFields.data.url});
     return {
-      message: "Reporte generado con éxito.",
+      message: t('reportSuccess'),
       report: result.report,
       success: true,
     };
   } catch (error) {
     console.error(error);
     return {
-      message: "Ha ocurrido un error al generar el reporte. Por favor, inténtalo de nuevo.",
+      message: t('reportError'),
       report: null,
       success: false,
     };
@@ -47,41 +50,47 @@ export async function runPerformanceAudit(
 }
 
 const contactSchema = z.object({
-    name: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres." }),
-    email: z.string().email({ message: "Por favor, introduce un email válido." }),
-    message: z.string().min(10, { message: "El mensaje debe tener al menos 10 caracteres." }),
+  name: z.string().min(2),
+  email: z.string().email(),
+  message: z.string().min(10),
 });
 
 export type ContactFormState = {
-    message: string | null;
-    success: boolean;
+  message: string | null;
+  success: boolean;
 };
 
 export async function submitContactForm(
-    prevState: ContactFormState,
-    formData: FormData
+  prevState: ContactFormState,
+  formData: FormData
 ): Promise<ContactFormState> {
-    const validatedFields = contactSchema.safeParse({
-        name: formData.get("name"),
-        email: formData.get("email"),
-        message: formData.get("message"),
-    });
+  const t = await getTranslations('ContactForm');
+  
+  const validatedFields = contactSchema.safeParse({
+    name: formData.get('name'),
+    email: formData.get('email'),
+    message: formData.get('message'),
+  });
 
-    if (!validatedFields.success) {
-        const errorMessages = validatedFields.error.flatten().fieldErrors;
-        const firstError = Object.values(errorMessages).flat()[0] || "Error de validación.";
-        return {
-            message: firstError,
-            success: false,
-        };
-    }
+  if (!validatedFields.success) {
+    const errorMap = validatedFields.error.flatten().fieldErrors;
+    let message = t('validationError');
+    if (errorMap.name) message = t('nameError');
+    else if (errorMap.email) message = t('emailError');
+    else if (errorMap.message) message = t('messageError');
     
-    // Here you would typically send an email or save to a database.
-    // For this example, we'll just log it to the console.
-    console.log("New contact form submission:", validatedFields.data);
-
     return {
-        message: "¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.",
-        success: true,
+      message: message,
+      success: false,
     };
+  }
+
+  // Here you would typically send an email or save to a database.
+  // For this example, we'll just log it to the console.
+  console.log('New contact form submission:', validatedFields.data);
+
+  return {
+    message: t('submitSuccess'),
+    success: true,
+  };
 }
