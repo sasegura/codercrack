@@ -1,97 +1,80 @@
 'use server';
 
-import {generatePerformanceReport} from '@/ai/flows/generate-performance-report';
-import {z} from 'zod';
-import {getTranslations} from 'next-intl/server';
+import { generatePerformanceReport } from '@/ai/flows/generate-performance-report';
+import { z } from 'zod';
 
-export type PerformanceAuditState = {
-  message?: string | null;
-  report?: string | null;
-  success: boolean;
-};
+// Contact Form
+const contactSchema = z.object({
+    name: z.string().min(2, 'El nombre debe tener al menos 2 caracteres.'),
+    email: z.string().email('Por favor, introduce un email válido.'),
+    message: z.string().min(10, 'El mensaje debe tener al menos 10 caracteres.'),
+});
 
-export async function runPerformanceAudit(
-  prevState: PerformanceAuditState,
-  formData: FormData
-): Promise<PerformanceAuditState> {
-  const t = await getTranslations('AuditForm');
+export interface ContactFormState {
+    message: string | null;
+    success: boolean;
+}
 
-  const performanceAuditSchema = z.object({
-    url: z.string().url({ message: t('errorInvalidURL') }),
-  });
+export async function submitContactForm(prevState: ContactFormState, formData: FormData): Promise<ContactFormState> {
+    const validatedFields = contactSchema.safeParse({
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message'),
+    });
 
-  const validatedFields = performanceAuditSchema.safeParse({
-    url: formData.get('url'),
-  });
+    if (!validatedFields.success) {
+        return {
+            message: validatedFields.error.flatten().fieldErrors.message?.[0] ?? 'Error de validación.',
+            success: false,
+        };
+    }
+    
+    console.log('Contact form submitted:', validatedFields.data);
 
-  if (!validatedFields.success) {
     return {
-      message: validatedFields.error.flatten().fieldErrors.url?.[0],
-      report: null,
-      success: false,
+        message: '¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.',
+        success: true,
     };
-  }
-
-  try {
-    const result = await generatePerformanceReport({url: validatedFields.data.url});
-    return {
-      message: 'Reporte generado con éxito.', // This is not shown to the user
-      report: result.report,
-      success: true,
-    };
-  } catch (error) {
-    console.error(error);
-    return {
-      message: t('errorGeneric'),
-      report: null,
-      success: false,
-    };
-  }
 }
 
 
-export type ContactFormState = {
-  message: string | null;
-  success: boolean;
-};
+// Performance Audit Form
+const auditUrlSchema = z.object({
+  url: z.string().url("Por favor, introduce una URL válida."),
+});
 
-export async function submitContactForm(
-  prevState: ContactFormState,
-  formData: FormData
-): Promise<ContactFormState> {
-  const t = await getTranslations('ContactForm');
-  
-  const contactSchema = z.object({
-    name: z.string().min(2, { message: t('nameTooShort') }),
-    email: z.string().email({ message: t('invalidEmail') }),
-    message: z.string().min(10, { message: t('messageTooShort') }),
-  });
+export interface PerformanceAuditState {
+    message: string | null;
+    report: string | null;
+    success: boolean;
+}
 
-  const validatedFields = contactSchema.safeParse({
-    name: formData.get('name'),
-    email: formData.get('email'),
-    message: formData.get('message'),
-  });
+export async function runPerformanceAudit(prevState: PerformanceAuditState, formData: FormData): Promise<PerformanceAuditState> {
+    const validatedFields = auditUrlSchema.safeParse({
+        url: formData.get('url'),
+    });
 
-  if (!validatedFields.success) {
-    const errorMap = validatedFields.error.flatten().fieldErrors;
-    let message = t('validationError');
-    if (errorMap.name) message = errorMap.name[0];
-    else if (errorMap.email) message = errorMap.email[0];
-    else if (errorMap.message) message = errorMap.message[0];
-    
-    return {
-      message: message,
-      success: false,
-    };
-  }
+    if (!validatedFields.success) {
+        return {
+            message: "Por favor, introduce una URL válida.",
+            report: null,
+            success: false,
+        };
+    }
 
-  // Here you would typically send an email or save to a database.
-  // For this example, we'll just log it to the console.
-  console.log('New contact form submission:', validatedFields.data);
-
-  return {
-    message: t('successMessage'),
-    success: true,
-  };
+    try {
+        const { report } = await generatePerformanceReport({ url: validatedFields.data.url });
+        return {
+            message: "Reporte generado exitosamente.",
+            report: report,
+            success: true,
+        };
+    } catch (e: any) {
+        console.error(e);
+        return {
+            message: "Ha ocurrido un error al generar el reporte. Por favor, inténtalo de nuevo.",
+            report: null,
+            success: false,
+        };
+    }
 }

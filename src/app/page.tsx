@@ -9,37 +9,32 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ContactForm } from '@/components/contact-form';
 import { LeadFormStepper } from '@/components/lead-form-stepper';
-import {useTranslations} from 'next-intl';
-import { Link } from '@/i18n';
+import Link from 'next/link';
 
 export default function Home() {
-  const t = useTranslations('HomePage');
-  const tServices = useTranslations('Services');
-  const tProjects = useTranslations('Projects');
-  const tTestimonials = useTranslations('Testimonials');
 
   const services = [
-    { icon: Codepen, title: tServices("service1Title"), description: tServices("service1Desc") },
-    { icon: Rocket, title: tServices("service2Title"), description: tServices("service2Desc") },
-    { icon: LayoutDashboard, title: tServices("service3Title"), description: tServices("service3Desc") },
-    { icon: Gauge, title: tServices("service4Title"), description: tServices("service4Desc") },
-    { icon: Replace, title: tServices("service5Title"), description: tServices("service5Desc") },
-    { icon: Library, title: tServices("service6Title"), description: tServices("service6Desc") },
-    { icon: Plug, title: tServices("service7Title"), description: tServices("service7Desc") },
-    { icon: Users, title: tServices("service8Title"), description: tServices("service8Desc") },
-    { icon: Wrench, title: tServices("service9Title"), description: tServices("service9Desc") },
+    { icon: Codepen, title: "Sitios Web y Portfolios", description: "Presencia online profesional con sitios estáticos o dinámicos de alto rendimiento." },
+    { icon: Rocket, title: "Landing Pages de Alta Conversión", description: "Páginas de destino optimizadas para velocidad y conversión en campañas de marketing." },
+    { icon: LayoutDashboard, title: "Aplicaciones Web (SPAs)", description: "Herramientas internas, dashboards y paneles de administración con React y Next.js." },
+    { icon: Gauge, title: "Optimización de Rendimiento", description: "Mejora de velocidad, accesibilidad y rendimiento general de sitios web existentes." },
+    { icon: Replace, title: "Migraciones y Refactorización", description: "Actualización de sitios lentos a tecnologías modernas como React y Next.js." },
+    { icon: Library, title: "Sistemas de Diseño UI", description: "Librerías de componentes reutilizables para estandarizar estilos y acelerar el desarrollo." },
+    { icon: Plug, title: "Integraciones Complejas", description: "Conexión con APIs, e-commerce, pasarelas de pago y sistemas de autenticación." },
+    { icon: Users, title: "Servicios White Label", description: "Colaboración y subcontratación de desarrollo frontend para agencias digitales." },
+    { icon: Wrench, title: "Mantenimiento y Soporte", description: "Mejoras incrementales, soporte y actualizaciones post-entrega." },
   ];
 
   const projects = [
-    { id: "portfolio-1", title: tProjects("project1Title"), description: tProjects("project1Desc"), tags: ["Next.js", "Tailwind CSS", "Recharts", "Firebase"] },
-    { id: "portfolio-2", title: tProjects("project2Title"), description: tProjects("project2Desc"), tags: ["React", "Gatsby", "Contentful", "Framer Motion"] },
-    { id: "portfolio-3", title: tProjects("project3Title"), description: tProjects("project3Desc"), tags: ["Next.js", "Shopify API", "Stripe", "Vercel"] },
+    { id: "portfolio-1", title: "Dashboard SaaS", description: "Una plataforma de análisis de datos para startups, con visualizaciones interactivas y rendimiento en tiempo real.", tags: ["Next.js", "Tailwind CSS", "Recharts", "Firebase"] },
+    { id: "portfolio-2", title: "Landing Page para App Móvil", description: "Página de destino de alta conversión para una nueva aplicación móvil, logrando un aumento del 40% en descargas.", tags: ["React", "Gatsby", "Contentful", "Framer Motion"] },
+    { id: "portfolio-3", title: "E-commerce de Moda", description: "Tienda online con un diseño minimalista, integración con Stripe y una experiencia de compra fluida.", tags: ["Next.js", "Shopify API", "Stripe", "Vercel"] },
   ];
 
   const testimonials = [
-    { name: tTestimonials("testimonial1Name"), company: tTestimonials("testimonial1Company"), quote: tTestimonials("testimonial1Quote") },
-    { name: tTestimonials("testimonial2Name"), company: tTestimonials("testimonial2Company"), quote: tTestimonials("testimonial2Quote") },
-    { name: tTestimonials("testimonial3Name"), company: tTestimonials("testimonial3Company"), quote: tTestimonials("testimonial3Quote") },
+    { name: "Ana Pérez", company: "CEO de TechFlow", quote: "El equipo de React Edge transformó nuestra idea en una aplicación web funcional y escalable. Su experiencia en React es inigualable." },
+    { name: "Carlos Ruiz", company: "Director de Marketing en Innovate", quote: "La nueva landing page ha superado todas nuestras expectativas. La velocidad de carga es increíble y las conversiones se han disparado." },
+    { name: "Laura Gómez", company: "Fundadora de Creative Co.", quote: "Trabajar con ellos fue un placer. Entendieron nuestra visión a la perfección y entregaron un sitio web impecable y profesional." },
   ];
 
   const aboutMeImage = PlaceHolderImages.find(p => p.id === 'about-me');
@@ -51,22 +46,22 @@ export default function Home() {
          <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20 z-0"></div>
         <div className="container px-4 md:px-6 z-10 relative">
           <Badge variant="outline" className="mb-4 bg-primary/10 border-primary/20 text-primary font-medium">
-            {t('badge')}
+            Desarrollo Frontend con React.js y Next.js
           </Badge>
           <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
-            {t('title')}
+            Desarrollo Frontend de Alto Impacto
           </h1>
           <p className="max-w-3xl mx-auto mt-6 text-lg md:text-xl text-muted-foreground">
-            {t('subtitle')}
+            Creamos aplicaciones web rápidas, fiables y con una experiencia de usuario excepcional que impulsan el crecimiento de tu negocio.
           </p>
           <div className="mt-8 flex justify-center gap-4 flex-wrap">
             <Button size="lg" asChild>
               <Link href="#proyectos">
-                {t('viewProjects')} <ArrowRight className="ml-2 h-5 w-5" />
+                Ver Proyectos <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="#lead-form">{useTranslations('Header')('freeConsultation')}</Link>
+              <Link href="#lead-form">Consulta Gratuita</Link>
             </Button>
           </div>
         </div>
@@ -76,9 +71,9 @@ export default function Home() {
       <section id="servicios" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('servicesTitle')}</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Nuestros Servicios</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
-              {t('servicesSubtitle')}
+              Soluciones a medida para llevar tu presencia digital al siguiente nivel.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -103,9 +98,9 @@ export default function Home() {
       <section id="lead-form" className="py-20 md:py-28 bg-background">
         <div className="container px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('leadFormTitle')}</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Cuéntame sobre tu Proyecto</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
-              {t('leadFormSubtitle')}
+              Completa estos breves pasos para que pueda entender mejor tus necesidades.
             </p>
           </div>
           <LeadFormStepper />
@@ -123,9 +118,9 @@ export default function Home() {
       <section id="proyectos" className="py-20 md:py-28 bg-background">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('portfolioTitle')}</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Proyectos Destacados</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
-              {t('portfolioSubtitle')}
+              Una muestra de nuestro trabajo y el impacto que generamos.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -151,7 +146,7 @@ export default function Home() {
       <section id="testimonios" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('testimonialsTitle')}</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Lo que dicen nuestros clientes</h2>
           </div>
           <Carousel opts={{ loop: true }} className="max-w-4xl mx-auto">
             <CarouselContent>
@@ -189,14 +184,14 @@ export default function Home() {
               {aboutMeImage && <Image src={aboutMeImage.imageUrl} alt="Frontend Developer" data-ai-hint={aboutMeImage.imageHint} fill className="rounded-lg object-cover shadow-lg shadow-primary/10"/>}
             </div>
             <div>
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground mb-4">{t('aboutTitle')}</h2>
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground mb-4">Sobre Mí</h2>
               <p className="text-muted-foreground mb-6 text-lg">
-                {t('aboutSubtitle')}
+                Soy un desarrollador frontend apasionado por construir interfaces de usuario modernas, intuitivas y de alto rendimiento. Con años de experiencia en el ecosistema de React, me especializo en transformar ideas complejas en realidades digitales.
               </p>
               <div className="space-y-4">
-                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">{t('aboutPoint1Title')}</span> {t('aboutPoint1')}</p></div>
-                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">{t('aboutPoint2Title')}</span> {t('aboutPoint2')}</p></div>
-                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">{t('aboutPoint3Title')}</span> {t('aboutPoint3')}</p></div>
+                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">Experiencia en React.js y Next.js:</span> Desarrollo de aplicaciones robustas y optimizadas para SEO.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">Enfoque en UX/UI:</span> Colaboración estrecha con diseñadores para crear experiencias de usuario memorables.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">Optimización de Rendimiento:</span> Obsesionado con la velocidad de carga y la eficiencia del frontend.</p></div>
               </div>
             </div>
           </div>
@@ -207,9 +202,9 @@ export default function Home() {
       <section id="contacto" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="max-w-2xl mx-auto text-center">
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('contactTitle')}</h2>
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">¿Listo para empezar tu proyecto?</h2>
               <p className="max-w-2xl mx-auto mt-4 mb-8 text-muted-foreground">
-                {t('contactSubtitle')}
+                Contáctame para una consulta gratuita. Hablemos de cómo puedo ayudarte a alcanzar tus objetivos.
               </p>
               <ContactForm />
           </div>
