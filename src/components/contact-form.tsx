@@ -1,6 +1,7 @@
 'use client';
 
-import {useFormState, useFormStatus} from 'react-dom';
+import {useActionState} from 'react';
+import {useFormStatus} from 'react-dom';
 import {submitContactForm, type ContactFormState} from '@/app/actions';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
@@ -28,7 +29,7 @@ function SubmitButton() {
 
 export function ContactForm() {
   const initialState: ContactFormState = {message: null, success: false};
-  const [state, dispatch] = useFormState(submitContactForm, initialState);
+  const [state, dispatch] = useActionState(submitContactForm, initialState);
   const formRef = useRef<HTMLFormElement>(null);
   const {toast} = useToast();
 

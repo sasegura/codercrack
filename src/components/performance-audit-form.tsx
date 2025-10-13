@@ -1,6 +1,7 @@
 'use client';
 
-import {useFormState, useFormStatus} from 'react-dom';
+import {useActionState} from 'react';
+import {useFormStatus} from 'react-dom';
 import {runPerformanceAudit, type PerformanceAuditState} from '@/app/actions';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
@@ -27,7 +28,7 @@ function SubmitButton() {
 
 export default function PerformanceAuditForm() {
   const initialState: PerformanceAuditState = {message: null, report: null, success: false};
-  const [state, dispatch] = useFormState(runPerformanceAudit, initialState);
+  const [state, dispatch] = useActionState(runPerformanceAudit, initialState);
 
   return (
     <div className="space-y-6">
