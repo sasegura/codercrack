@@ -11,10 +11,10 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navLinks = [
-    {href: '#servicios', label: 'Services'},
-    {href: '#proyectos', label: 'Projects'},
-    {href: '#sobre-mi', label: 'About Me'},
-    {href: '#contacto', label: 'Contact'},
+    {href: '#services', label: 'Services'},
+    {href: '#projects', label: 'Projects'},
+    {href: '#about-me', label: 'About Me'},
+    {href: '#contact', label: 'Contact'},
   ];
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export function Header() {
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2 text-2xl font-bold font-headline text-primary">
           <Code className="h-7 w-7" />
-          React Edge
+          CoderCrack
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map(link => (
@@ -63,7 +63,7 @@ export function Header() {
               <div className="flex items-center justify-between border-b pb-4 -mt-2">
                 <Link href="/" className="flex items-center gap-2 text-xl font-bold font-headline text-primary">
                   <Code className="h-6 w-6" />
-                  React Edge
+                  CoderCrack
                 </Link>
               </div>
               <nav className="flex flex-col gap-6 py-6">

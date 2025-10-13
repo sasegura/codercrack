@@ -9,10 +9,10 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <Link href="/" className="flex items-center gap-2 text-xl font-bold font-headline text-primary">
                 <Code className="h-6 w-6" />
-                React Edge
+                CoderCrack
             </Link>
           <p className="text-sm text-center md:text-left">
-            &copy; {new Date().getFullYear()} React Edge. All rights reserved.
+            &copy; {new Date().getFullYear()} CoderCrack. All rights reserved.
           </p>
           <div className="flex gap-4">
             <Link href="#" aria-label="GitHub" className="text-secondary-foreground hover:text-primary transition-colors">

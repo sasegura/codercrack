@@ -1,6 +1,6 @@
-# React Edge - Frontend Developer Portfolio
+# CoderCrack - Frontend Developer Portfolio
 
-This is the repository for the "React Edge" project, a professional portfolio template for frontend developers specializing in React and Next.js. The website is designed to showcase services, featured projects, client testimonials, and capture leads through interactive forms.
+This is the repository for the "CoderCrack" project, a professional portfolio template for frontend developers specializing in React and Next.js. The website is designed to showcase services, featured projects, client testimonials, and capture leads through interactive forms.
 
 Additionally, it includes a free web performance audit tool powered by generative AI (Genkit) as a lead magnet to attract potential clients.
 

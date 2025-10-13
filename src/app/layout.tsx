@@ -18,7 +18,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'React Edge | High-Impact Frontend Development',
+  title: 'CoderCrack | High-Impact Frontend Development',
   description: 'We create fast, reliable web applications with an exceptional user experience that drive business growth.',
   keywords: ['React Developer', 'frontend performance React', 'React web applications', 'Next.js developer', 'freelance developer'],
 };
