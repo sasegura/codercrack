@@ -9,6 +9,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ContactForm } from '@/components/contact-form';
+import { LeadFormStepper } from '@/components/lead-form-stepper';
 import {useTranslations} from 'next-intl';
 
 export default function Home() {
@@ -65,7 +66,7 @@ export default function Home() {
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="#contacto">{useTranslations('Header')('freeConsultation')}</Link>
+              <Link href="#lead-form">{useTranslations('Header')('freeConsultation')}</Link>
             </Button>
           </div>
         </div>
@@ -98,15 +99,28 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Lead Form Stepper Section */}
+      <section id="lead-form" className="py-20 md:py-28 bg-background">
+        <div className="container px-4 md:px-6">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('leadFormTitle')}</h2>
+            <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
+              {t('leadFormSubtitle')}
+            </p>
+          </div>
+          <LeadFormStepper />
+        </div>
+      </section>
+
       {/* Performance Audit Section */}
-      <section id="auditoria" className="py-20 md:py-28 bg-background">
+      <section id="auditoria" className="py-20 md:py-28 bg-secondary">
           <div className="container px-4 md:px-6">
               <PerformanceAuditForm />
           </div>
       </section>
 
       {/* Portfolio Section */}
-      <section id="proyectos" className="py-20 md:py-28 bg-secondary">
+      <section id="proyectos" className="py-20 md:py-28 bg-background">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('portfolioTitle')}</h2>
@@ -118,7 +132,7 @@ export default function Home() {
             {projects.map((project) => {
               const image = PlaceHolderImages.find(p => p.id === project.id);
               return (
-              <Card key={project.title} className="overflow-hidden group bg-background/50 border-primary/10">
+              <Card key={project.title} className="overflow-hidden group bg-secondary/50 border-primary/10">
                 {image && <div className="overflow-hidden"><Image src={image.imageUrl} alt={project.title} width={600} height={400} data-ai-hint={image.imageHint} className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"/></div>}
                 <CardContent className="p-6">
                   <h3 className="text-xl font-headline font-semibold mb-2">{project.title}</h3>
@@ -134,7 +148,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonios" className="py-20 md:py-28 bg-background">
+      <section id="testimonios" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('testimonialsTitle')}</h2>
@@ -143,7 +157,7 @@ export default function Home() {
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index}>
-                  <Card className="bg-secondary">
+                  <Card className="bg-background">
                     <CardContent className="p-8 text-center">
                       <p className="text-lg italic mb-6 text-foreground/80">"{testimonial.quote}"</p>
                       <div className="flex items-center justify-center">
@@ -168,7 +182,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="sobre-mi" className="py-20 md:py-28 bg-secondary">
+      <section id="sobre-mi" className="py-20 md:py-28 bg-background">
         <div className="container px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-square max-w-md mx-auto">
@@ -190,7 +204,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contacto" className="py-20 md:py-28 bg-background">
+      <section id="contacto" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="max-w-2xl mx-auto text-center">
               <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('contactTitle')}</h2>
