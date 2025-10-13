@@ -1,16 +1,16 @@
 'use client';
 
-import {useActionState} from 'react';
-import {useFormStatus} from 'react-dom';
-import {runPerformanceAudit, type PerformanceAuditState} from '@/app/actions';
-import {Button} from '@/components/ui/button';
-import {Input} from '@/components/ui/input';
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from '@/components/ui/card';
-import {Alert, AlertDescription, AlertTitle} from '@/components/ui/alert';
-import {Loader2, Sparkles} from 'lucide-react';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
+import { runPerformanceAudit, type PerformanceAuditState } from '@/app/actions';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Loader2, Sparkles } from 'lucide-react';
 
 function SubmitButton() {
-  const {pending} = useFormStatus();
+  const { pending } = useFormStatus();
 
   return (
     <Button type="submit" disabled={pending} className="w-full sm:w-auto">
@@ -27,12 +27,12 @@ function SubmitButton() {
 }
 
 export default function PerformanceAuditForm() {
-  const initialState: PerformanceAuditState = {message: null, report: null, success: false};
+  const initialState: PerformanceAuditState = { message: null, report: null, success: false };
   const [state, dispatch] = useActionState(runPerformanceAudit, initialState);
 
   return (
     <div className="space-y-6">
-      <Card className="max-w-3xl mx-auto bg-secondary border-accent shadow-lg shadow-accent/10">
+      <Card className="max-w-3xl mx-auto bg-background/50 border-accent shadow-lg shadow-accent/10">
         <form action={dispatch}>
           <CardHeader className="text-center">
             <div className="mx-auto bg-accent/10 p-3 rounded-full w-fit mb-4">
@@ -66,7 +66,7 @@ export default function PerformanceAuditForm() {
       )}
 
       {state.report && (
-        <Card className="max-w-3xl mx-auto bg-secondary">
+        <Card className="max-w-3xl mx-auto bg-background/50">
           <CardHeader>
             <CardTitle>Resultados del Análisis</CardTitle>
           </CardHeader>

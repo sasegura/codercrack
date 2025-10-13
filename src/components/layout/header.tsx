@@ -48,7 +48,7 @@ export function Header() {
             </Link>
           ))}
           <Button asChild>
-            <Link href="#contacto">Consulta Gratuita</Link>
+            <Link href="#lead-form">Consulta Gratuita</Link>
           </Button>
         </nav>
         <div className="md:hidden flex items-center gap-2">
@@ -80,7 +80,7 @@ export function Header() {
               <div className="mt-auto border-t pt-6">
                 <SheetClose asChild>
                   <Button asChild size="lg" className="w-full">
-                    <Link href="#contacto">Consulta Gratuita</Link>
+                    <Link href="#lead-form">Consulta Gratuita</Link>
                   </Button>
                 </SheetClose>
               </div>
