@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Script para desplegar en GitHub Pages
-# Uso: ./scripts/deploy.sh
+# Uso: npm run deploy
 
 set -e
 
 echo "🚀 Iniciando despliegue en GitHub Pages..."
 
-# Verificar que estamos en la rama main
+# Verificar que estamos en la rama main (o la que prefieras)
 CURRENT_BRANCH=$(git branch --show-current)
 if [ "$CURRENT_BRANCH" != "main" ]; then
-    echo "⚠️  Advertencia: No estás en la rama main. Rama actual: $CURRENT_BRANCH"
+    echo "⚠️  Advertencia: No estás en la rama 'main'. Rama actual: $CURRENT_BRANCH"
     read -p "¿Continuar de todos modos? (y/N): " -n 1 -r
     echo
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
@@ -34,7 +34,7 @@ fi
 
 # Construir el proyecto para GitHub Pages
 echo "🔨 Construyendo el proyecto para GitHub Pages..."
-REPOSITORY_NAME=$(basename $(git remote get-url origin) .git) npm run build:gh-pages
+npm run build:gh-pages
 
 # Verificar que la carpeta out existe
 if [ ! -d "out" ]; then

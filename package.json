@@ -11,9 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "deploy": "npm run build && npm run deploy:gh-pages",
-    "deploy:gh-pages": "npx gh-pages -d out",
-    "deploy:script": "./scripts/deploy.sh"
+    "deploy": "./scripts/deploy.sh"
   },
   "dependencies": {
     "@genkit-ai/google-genai": "^1.20.0",
