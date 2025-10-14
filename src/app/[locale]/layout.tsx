@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import {NextIntlClientProvider} from 'next-intl';
-import {getTranslations} from 'next-intl/server';
+import {getMessages} from 'next-intl/server';
 import '../globals.css';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -21,15 +21,11 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-export async function generateMetadata({params: {locale}}: {params: {locale: string}}): Promise<Metadata> {
-  const t = await getTranslations({locale, namespace: 'Metadata'});
- 
-  return {
-    title: t('title'),
-    description: t('description'),
-    keywords: t('keywords').split(', '),
-  };
-}
+export const metadata: Metadata = {
+  title: "CoderCrack | High-Impact Frontend Development",
+  description: "We create fast, reliable web applications with an exceptional user experience that drive business growth.",
+  keywords: ["React Developer", "frontend performance React", "React web applications", "Next.js developer", "freelance developer"]
+};
 
 export default async function RootLayout({
   children,
@@ -43,7 +39,7 @@ export default async function RootLayout({
 
   let messages;
   try {
-    messages = (await import(`../../../messages/${locale}.json`)).default;
+    messages = (await import(`../../messages/${locale}.json`)).default;
   } catch (error) {
     notFound();
   }
