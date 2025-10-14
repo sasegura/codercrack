@@ -1,5 +1,3 @@
-// This is the root page component for your Next.js app.
-// It is now a client component to handle the redirect.
 'use client';
 
 import { useEffect } from 'react';
