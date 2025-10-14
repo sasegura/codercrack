@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import {NextIntlClientProvider} from 'next-intl';
-import {getLocale, getMessages, getTranslations} from 'next-intl/server';
+import {getTranslations} from 'next-intl/server';
 import '../globals.css';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster";
 import { Space_Grotesk, Inter } from 'next/font/google';
+import { notFound } from 'next/navigation';
+import { locales } from '@/navigation';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -31,13 +33,20 @@ export async function generateMetadata({params: {locale}}: {params: {locale: str
 
 export default async function RootLayout({
   children,
-  params
+  params: {locale}
 }: Readonly<{
   children: React.ReactNode;
   params: {locale: string};
 }>) {
-  const locale = await getLocale();
-  const messages = await getMessages();
+  // Validate that the incoming `locale` parameter is valid
+  if (!locales.includes(locale as any)) notFound();
+
+  let messages;
+  try {
+    messages = (await import(`../../../messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
 
   return (
     <html lang={locale} className={`${spaceGrotesk.variable} ${inter.variable} dark !scroll-smooth`}>
