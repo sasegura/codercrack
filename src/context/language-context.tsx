@@ -21,9 +21,11 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguageState] = useState<Language>('en');
 
   useEffect(() => {
-    const browserLang = navigator.language.split('-')[0];
-    if (browserLang === 'es') {
-      setLanguageState('es');
+    if (typeof window !== 'undefined') {
+      const browserLang = navigator.language.split('-')[0];
+      if (browserLang === 'es') {
+        setLanguageState('es');
+      }
     }
   }, []);
 

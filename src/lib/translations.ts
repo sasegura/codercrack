@@ -1,10 +1,5 @@
 export const translations = {
   en: {
-    Metadata: {
-      title: 'CoderCrack | High-Impact Frontend Development',
-      description: 'We create fast, reliable web applications with an exceptional user experience that drive business growth.',
-      keywords: 'React Developer, frontend performance React, React web applications, Next.js developer, freelance developer',
-    },
     Header: {
       services: 'Services',
       projects: 'Projects',
@@ -22,42 +17,24 @@ export const translations = {
     Services: {
       title: 'Our Services',
       subtitle: 'Custom solutions to take your digital presence to the next level.',
-      web_portfolio: {
-        title: 'Websites & Portfolios',
-        description: 'Professional online presence with high-performance static or dynamic sites.',
-      },
-      landing_pages: {
-        title: 'High-Conversion Landing Pages',
-        description: 'Landing pages optimized for speed and conversion in marketing campaigns.',
-      },
-      web_apps: {
-        title: 'Web Applications (SPAs)',
-        description: 'Internal tools, dashboards, and admin panels with React and Next.js.',
-      },
-      performance: {
-        title: 'Performance Optimization',
-        description: 'Improving speed, accessibility, and overall performance of existing websites.',
-      },
-      migrations: {
-        title: 'Migrations & Refactoring',
-        description: 'Updating slow sites to modern technologies like React and Next.js.',
-      },
-      design_systems: {
-        title: 'UI Design Systems',
-        description: 'Reusable component libraries to standardize styles and accelerate development.',
-      },
-      integrations: {
-        title: 'Complex Integrations',
-        description: 'Connection with APIs, e-commerce, payment gateways, and authentication systems.',
-      },
-      white_label: {
-        title: 'White Label Services',
-        description: 'Collaboration and outsourcing of frontend development for digital agencies.',
-      },
-      maintenance: {
-        title: 'Maintenance & Support',
-        description: 'Incremental improvements, support, and post-delivery updates.',
-      },
+      'web_portfolio.title': 'Websites & Portfolios',
+      'web_portfolio.description': 'Professional online presence with high-performance static or dynamic sites.',
+      'landing_pages.title': 'High-Conversion Landing Pages',
+      'landing_pages.description': 'Landing pages optimized for speed and conversion in marketing campaigns.',
+      'web_apps.title': 'Web Applications (SPAs)',
+      'web_apps.description': 'Internal tools, dashboards, and admin panels with React and Next.js.',
+      'performance.title': 'Performance Optimization',
+      'performance.description': 'Improving speed, accessibility, and overall performance of existing websites.',
+      'migrations.title': 'Migrations & Refactoring',
+      'migrations.description': 'Updating slow sites to modern technologies like React and Next.js.',
+      'design_systems.title': 'UI Design Systems',
+      'design_systems.description': 'Reusable component libraries to standardize styles and accelerate development.',
+      'integrations.title': 'Complex Integrations',
+      'integrations.description': 'Connection with APIs, e-commerce, payment gateways, and authentication systems.',
+      'white_label.title': 'White Label Services',
+      'white_label.description': 'Collaboration and outsourcing of frontend development for digital agencies.',
+      'maintenance.title': 'Maintenance & Support',
+      'maintenance.description': 'Incremental improvements, support, and post-delivery updates.',
     },
     Projects: {
       title: 'Featured Projects',
@@ -173,11 +150,6 @@ export const translations = {
     },
   },
   es: {
-    Metadata: {
-      title: 'CoderCrack | Desarrollo Frontend de Alto Impacto',
-      description: 'Creamos aplicaciones web rápidas y confiables con una experiencia de usuario excepcional que impulsan el crecimiento de tu negocio.',
-      keywords: 'Desarrollador React, rendimiento frontend React, aplicaciones web React, desarrollador Next.js, desarrollador freelance',
-    },
     Header: {
       services: 'Servicios',
       projects: 'Proyectos',
@@ -195,42 +167,24 @@ export const translations = {
     Services: {
       title: 'Nuestros Servicios',
       subtitle: 'Soluciones a medida para llevar tu presencia digital al siguiente nivel.',
-      web_portfolio: {
-        title: 'Webs y Portfolios',
-        description: 'Presencia online profesional con sitios estáticos o dinámicos de alto rendimiento.',
-      },
-      landing_pages: {
-        title: 'Landing Pages de Alta Conversión',
-        description: 'Páginas de aterrizaje optimizadas para velocidad y conversión en campañas de marketing.',
-      },
-      web_apps: {
-        title: 'Aplicaciones Web (SPAs)',
-        description: 'Herramientas internas, dashboards y paneles de administración con React y Next.js.',
-      },
-      performance: {
-        title: 'Optimización de Rendimiento',
-        description: 'Mejora de la velocidad, accesibilidad y rendimiento general de sitios web existentes.',
-      },
-      migrations: {
-        title: 'Migraciones y Refactorización',
-        description: 'Actualización de sitios lentos a tecnologías modernas como React y Next.js.',
-      },
-      design_systems: {
-        title: 'Sistemas de Diseño UI',
-        description: 'Librerías de componentes reutilizables para estandarizar estilos y acelerar el desarrollo.',
-      },
-      integrations: {
-        title: 'Integraciones Complejas',
-        description: 'Conexión con APIs, e-commerce, pasarelas de pago y sistemas de autenticación.',
-      },
-      white_label: {
-        title: 'Servicios Marca Blanca',
-        description: 'Colaboración y outsourcing de desarrollo frontend para agencias digitales.',
-      },
-      maintenance: {
-        title: 'Mantenimiento y Soporte',
-        description: 'Mejoras incrementales, soporte y actualizaciones post-entrega.',
-      },
+      'web_portfolio.title': 'Webs y Portfolios',
+      'web_portfolio.description': 'Presencia online profesional con sitios estáticos o dinámicos de alto rendimiento.',
+      'landing_pages.title': 'Landing Pages de Alta Conversión',
+      'landing_pages.description': 'Páginas de aterrizaje optimizadas para velocidad y conversión en campañas de marketing.',
+      'web_apps.title': 'Aplicaciones Web (SPAs)',
+      'web_apps.description': 'Herramientas internas, dashboards y paneles de administración con React y Next.js.',
+      'performance.title': 'Optimización de Rendimiento',
+      'performance.description': 'Mejora de la velocidad, accesibilidad y rendimiento general de sitios web existentes.',
+      'migrations.title': 'Migraciones y Refactorización',
+      'migrations.description': 'Actualización de sitios lentos a tecnologías modernas como React y Next.js.',
+      'design_systems.title': 'Sistemas de Diseño UI',
+      'design_systems.description': 'Librerías de componentes reutilizables para estandarizar estilos y acelerar el desarrollo.',
+      'integrations.title': 'Integraciones Complejas',
+      'integrations.description': 'Conexión con APIs, e-commerce, pasarelas de pago y sistemas de autenticación.',
+      'white_label.title': 'Servicios Marca Blanca',
+      'white_label.description': 'Colaboración y outsourcing de desarrollo frontend para agencias digitales.',
+      'maintenance.title': 'Mantenimiento y Soporte',
+      'maintenance.description': 'Mejoras incrementales, soporte y actualizaciones post-entrega.',
     },
     Projects: {
       title: 'Proyectos Destacados',
