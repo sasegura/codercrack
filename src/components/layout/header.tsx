@@ -2,27 +2,19 @@
 
 import {useState, useEffect} from 'react';
 import Link from 'next/link';
-import {Menu, Code, Languages} from 'lucide-react';
+import {Menu, Code} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Sheet, SheetContent, SheetTrigger, SheetClose} from '@/components/ui/sheet';
 import {cn} from '@/lib/utils';
-import { useLanguage } from '@/context/language-context';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { t, setLanguage, language } = useLanguage();
 
   const navLinks = [
-    {href: '#servicios', label: t('Header.services')},
-    {href: '#proyectos', label: t('Header.projects')},
-    {href: '#sobre-mi', label: t('Header.about_me')},
-    {href: '#contacto', label: t('Header.contact')},
+    {href: '#servicios', label: 'Services'},
+    {href: '#proyectos', label: 'Projects'},
+    {href: '#sobre-mi', label: 'About Me'},
+    {href: '#contacto', label: 'Contact'},
   ];
 
   useEffect(() => {
@@ -56,40 +48,10 @@ export function Header() {
             </Link>
           ))}
           <Button asChild>
-            <Link href="#lead-form">{t('Header.free_consultation')}</Link>
+            <Link href="#lead-form">Free Consultation</Link>
           </Button>
-           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Languages className="h-5 w-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setLanguage('en')} disabled={language === 'en'}>
-                English
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLanguage('es')} disabled={language === 'es'}>
-                Español
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </nav>
         <div className="md:hidden flex items-center gap-2">
-           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Languages className="h-5 w-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setLanguage('en')} disabled={language === 'en'}>
-                English
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLanguage('es')} disabled={language === 'es'}>
-                Español
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -118,7 +80,7 @@ export function Header() {
               <div className="mt-auto border-t pt-6">
                 <SheetClose asChild>
                   <Button asChild size="lg" className="w-full">
-                    <Link href="#lead-form">{t('Header.free_consultation')}</Link>
+                    <Link href="#lead-form">Free Consultation</Link>
                   </Button>
                 </SheetClose>
               </div>

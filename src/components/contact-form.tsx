@@ -8,19 +8,17 @@ import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react';
 import { z } from 'zod';
-import { useLanguage } from '@/context/language-context';
 
 function SubmitButton({ isPending }: { isPending: boolean }) {
-  const { t } = useLanguage();
   return (
     <Button type="submit" className="w-full" size="lg" disabled={isPending}>
       {isPending ? (
         <>
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          {t('ContactForm.sending')}
+          Sending...
         </>
       ) : (
-        t('ContactForm.send_message')
+        'Send Message'
       )}
     </Button>
   );
@@ -30,12 +28,11 @@ export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
-  const { t } = useLanguage();
 
   const contactSchema = z.object({
-      name: z.string().min(2, t('ContactForm.validation_name')),
-      email: z.string().email(t('ContactForm.validation_email')),
-      message: z.string().min(10, t('ContactForm.validation_message')),
+      name: z.string().min(2, 'Name must be at least 2 characters long.'),
+      email: z.string().email('Please enter a valid email address.'),
+      message: z.string().min(10, 'Message must be at least 10 characters long.'),
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -52,8 +49,8 @@ export function ContactForm() {
       if (!validatedFields.success) {
           const firstError = Object.values(validatedFields.error.flatten().fieldErrors)[0]?.[0];
           toast({
-            title: t('ContactForm.toast_error_title'),
-            description: firstError ?? t('ContactForm.toast_validation_error'),
+            title: 'Error',
+            description: firstError ?? 'Validation error.',
             variant: 'destructive',
           });
           return;
@@ -63,8 +60,8 @@ export function ContactForm() {
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       toast({
-        title: t('ContactForm.toast_success_title'),
-        description: t('ContactForm.toast_success_description'),
+        title: 'Message Sent',
+        description: 'Thank you for your message! I will get back to you soon.',
         variant: 'default',
       });
       formRef.current?.reset();
@@ -76,14 +73,14 @@ export function ContactForm() {
       <CardContent className="p-6">
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Input id="name" name="name" placeholder={t('ContactForm.placeholder_name')} required className="bg-background/50" disabled={isPending} />
+            <Input id="name" name="name" placeholder="Your name" required className="bg-background/50" disabled={isPending} />
           </div>
           <div className="space-y-2">
             <Input
               id="email"
               name="email"
               type="email"
-              placeholder={t('ContactForm.placeholder_email')}
+              placeholder="Your email"
               required
               className="bg-background/50"
               disabled={isPending}
@@ -93,7 +90,7 @@ export function ContactForm() {
             <Textarea
               id="message"
               name="message"
-              placeholder={t('ContactForm.placeholder_message')}
+              placeholder="How can I help you?"
               required
               rows={5}
               className="bg-background/50"
