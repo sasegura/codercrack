@@ -9,7 +9,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ContactForm } from '@/components/contact-form';
 import { LeadFormStepper } from '@/components/lead-form-stepper';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import {useTranslations} from 'next-intl';
 
 export default function Home() {
