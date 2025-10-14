@@ -6,7 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Loader2, Sparkles } from 'lucide-react';
-import { generatePerformanceReport } from '@/ai/flows/generate-performance-report';
 import { z } from 'zod';
 
 const auditUrlSchema = z.object({
@@ -57,10 +56,38 @@ export default function PerformanceAuditForm() {
         }
 
         try {
-            const { report } = await generatePerformanceReport({ url: validatedFields.data.url });
+            // Simular delay de procesamiento
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Generar reporte simulado for static export
+            const mockReport = `# Performance Audit Report for ${validatedFields.data.url}
+
+## Overview
+This is a simulated performance audit report. For a real analysis, this site would need to be hosted on a platform with server capabilities.
+
+This report would typically analyze:
+- Page load times & Core Web Vitals
+- Resource optimization opportunities
+- Mobile performance & SEO factors
+
+## Key Findings (Simulated)
+- **Lighthouse Score**: 85/100
+- **First Contentful Paint**: 1.2s
+- **Largest Contentful Paint**: 2.1s
+- **Cumulative Layout Shift**: 0.05
+
+## Recommendations
+1. Optimize images (WebP format, lazy loading)
+2. Minimize CSS and JavaScript
+3. Enable compression and use a CDN
+4. Implement caching strategies
+
+## Next Steps
+Consider implementing these optimizations to improve your site's performance and user experience.`;
+
             setState({
                 message: "Report generated successfully.",
-                report: report,
+                report: mockReport,
                 success: true,
             });
         } catch (e: any) {
@@ -98,7 +125,7 @@ export default function PerformanceAuditForm() {
             </div>
           </CardContent>
           <CardFooter>
-            <p className="text-sm text-muted-foreground w-full text-center">Powered by Generative AI</p>
+            <p className="text-sm text-muted-foreground w-full text-center">Powered by Generative AI (Simulation)</p>
           </CardFooter>
         </form>
       </Card>
