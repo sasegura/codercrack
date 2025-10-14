@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import {NextIntlClientProvider, useMessages} from 'next-intl';
-import {getTranslations} from 'next-intl/server';
+import {NextIntlClientProvider} from 'next-intl';
+import {getLocale, getMessages, getTranslations} from 'next-intl/server';
 import '../globals.css';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -29,14 +29,15 @@ export async function generateMetadata({params: {locale}}: {params: {locale: str
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-  params: {locale}
+  params
 }: Readonly<{
   children: React.ReactNode;
   params: {locale: string};
 }>) {
-  const messages = useMessages();
+  const locale = await getLocale();
+  const messages = await getMessages();
 
   return (
     <html lang={locale} className={`${spaceGrotesk.variable} ${inter.variable} dark !scroll-smooth`}>
