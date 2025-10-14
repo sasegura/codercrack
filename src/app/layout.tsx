@@ -1,8 +1,8 @@
-import type { Metadata } from 'next';
+// This is the root layout component for your Next.js app.
+// It applies to all routes and provides the basic HTML structure.
+// No internationalization is applied here.
+
 import './globals.css';
-import { Header } from '@/components/layout/header';
-import { Footer } from '@/components/layout/footer';
-import { Toaster } from "@/components/ui/toaster";
 import { Space_Grotesk, Inter } from 'next/font/google';
 
 const spaceGrotesk = Space_Grotesk({
@@ -17,27 +17,10 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-export const metadata: Metadata = {
-  title: 'CoderCrack | High-Impact Frontend Development',
-  description: 'We create fast, reliable web applications with an exceptional user experience that drive business growth.',
-  keywords: ['React Developer', 'frontend performance React', 'React web applications', 'Next.js developer', 'freelance developer'],
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} dark !scroll-smooth`}>
-      <body className="font-body antialiased">
-          <Header />
-          <main className="bg-background">
-            {children}
-          </main>
-          <Footer />
-          <Toaster />
-      </body>
+      <body className="font-body antialiased">{children}</body>
     </html>
   );
 }

@@ -6,15 +6,17 @@ import {Menu, Code} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Sheet, SheetContent, SheetTrigger, SheetClose} from '@/components/ui/sheet';
 import {cn} from '@/lib/utils';
+import {useTranslations} from 'next-intl';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const t = useTranslations('Header');
 
   const navLinks = [
-    {href: '#services', label: 'Services'},
-    {href: '#projects', label: 'Projects'},
-    {href: '#about-me', label: 'About Me'},
-    {href: '#contact', label: 'Contact'},
+    {href: '#servicios', label: t('services')},
+    {href: '#proyectos', label: t('projects')},
+    {href: '#sobre-mi', label: t('about_me')},
+    {href: '#contacto', label: t('contact')},
   ];
 
   useEffect(() => {
@@ -48,7 +50,7 @@ export function Header() {
             </Link>
           ))}
           <Button asChild>
-            <Link href="#lead-form">Free Consultation</Link>
+            <Link href="#lead-form">{t('free_consultation')}</Link>
           </Button>
         </nav>
         <div className="md:hidden flex items-center gap-2">
@@ -80,7 +82,7 @@ export function Header() {
               <div className="mt-auto border-t pt-6">
                 <SheetClose asChild>
                   <Button asChild size="lg" className="w-full">
-                    <Link href="#lead-form">Free Consultation</Link>
+                    <Link href="#lead-form">{t('free_consultation')}</Link>
                   </Button>
                 </SheetClose>
               </div>
