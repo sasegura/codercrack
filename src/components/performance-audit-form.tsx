@@ -8,7 +8,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Loader2, Sparkles } from 'lucide-react';
 import { z } from 'zod';
 import { generatePerformanceReport } from '@/ai/flows/generate-performance-report';
-import { useTranslations } from 'next-intl';
+import { useLanguage } from '@/context/language-context';
 
 interface PerformanceAuditState {
     message: string | null;
@@ -17,16 +17,16 @@ interface PerformanceAuditState {
 }
 
 function SubmitButton({ isPending }: { isPending: boolean }) {
-  const t = useTranslations('PerformanceAudit');
+  const { t } = useLanguage();
   return (
     <Button type="submit" disabled={isPending} className="w-full sm:w-auto">
       {isPending ? (
         <>
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          {t('button_analyzing')}
+          {t('PerformanceAudit.button_analyzing')}
         </>
       ) : (
-        t('button_generate')
+        t('PerformanceAudit.button_generate')
       )}
     </Button>
   );
@@ -35,10 +35,10 @@ function SubmitButton({ isPending }: { isPending: boolean }) {
 export default function PerformanceAuditForm() {
   const [isPending, startTransition] = useTransition();
   const [state, setState] = useState<PerformanceAuditState>({ message: null, report: null, success: false });
-  const t = useTranslations('PerformanceAudit');
+  const { t } = useLanguage();
   
   const auditUrlSchema = z.object({
-    url: z.string().url(t('validation_url')),
+    url: z.string().url(t('PerformanceAudit.validation_url')),
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -52,7 +52,7 @@ export default function PerformanceAuditForm() {
 
         if (!validatedFields.success) {
             setState({
-                message: t('validation_url'),
+                message: t('PerformanceAudit.validation_url'),
                 report: null,
                 success: false,
             });
@@ -63,14 +63,14 @@ export default function PerformanceAuditForm() {
             const result = await generatePerformanceReport(validatedFields.data);
 
             setState({
-                message: t('success_message'),
+                message: t('PerformanceAudit.success_message'),
                 report: result.report,
                 success: true,
             });
         } catch (e: any) {
             console.error(e);
             setState({
-                message: t('error_message'),
+                message: t('PerformanceAudit.error_message'),
                 report: null,
                 success: false,
             });
@@ -86,8 +86,8 @@ export default function PerformanceAuditForm() {
             <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit mb-4">
               <Sparkles className="h-8 w-8 text-primary" />
             </div>
-            <CardTitle className="font-headline text-2xl md:text-3xl text-foreground">{t('title')}</CardTitle>
-            <CardDescription className="text-base text-muted-foreground">{t('description')}</CardDescription>
+            <CardTitle className="font-headline text-2xl md:text-3xl text-foreground">{t('PerformanceAudit.title')}</CardTitle>
+            <CardDescription className="text-base text-muted-foreground">{t('PerformanceAudit.description')}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col sm:flex-row gap-2">
@@ -102,14 +102,14 @@ export default function PerformanceAuditForm() {
             </div>
           </CardContent>
           <CardFooter>
-            <p className="text-sm text-muted-foreground w-full text-center">{t('powered_by')}</p>
+            <p className="text-sm text-muted-foreground w-full text-center">{t('PerformanceAudit.powered_by')}</p>
           </CardFooter>
         </form>
       </Card>
 
       {!state.success && state.message && (
         <Alert variant="destructive" className="max-w-3xl mx-auto">
-          <AlertTitle>{t('error_title')}</AlertTitle>
+          <AlertTitle>{t('PerformanceAudit.error_title')}</AlertTitle>
           <AlertDescription>{state.message}</AlertDescription>
         </Alert>
       )}
@@ -117,7 +117,7 @@ export default function PerformanceAuditForm() {
       {state.report && (
         <Card className="max-w-3xl mx-auto mt-8">
           <CardHeader>
-            <CardTitle>{t('results_title')}</CardTitle>
+            <CardTitle>{t('PerformanceAudit.results_title')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-headings:text-foreground prose-strong:text-foreground whitespace-pre-wrap">

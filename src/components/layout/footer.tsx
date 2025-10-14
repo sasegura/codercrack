@@ -1,8 +1,10 @@
 'use client';
 import Link from 'next/link';
 import { Github, Linkedin, Twitter, Code } from 'lucide-react';
+import { useLanguage } from '@/context/language-context';
 
 export function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 md:px-6 py-8">
@@ -12,7 +14,7 @@ export function Footer() {
                 CoderCrack
             </Link>
           <p className="text-sm text-center md:text-left">
-            &copy; {new Date().getFullYear()} CoderCrack. All rights reserved.
+            &copy; {new Date().getFullYear()} {t('Footer.copyright')}
           </p>
           <div className="flex gap-4">
             <Link href="#" aria-label="GitHub" className="text-secondary-foreground hover:text-primary transition-colors">
