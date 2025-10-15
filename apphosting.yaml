@@ -1,24 +1,9 @@
 # Settings to manage and configure a Firebase App Hosting backend.
 # https://firebase.google.com/docs/app-hosting/configure
-
-# Specifies the node.js version to use.
-# We recommend pinned versions, but major versions (e.g. 20) are also supported.
 runtime: nodejs20
-
-# Specifies the commands to build your app.
-# The GITOPS_NPM_TOKEN secret is a long-lived secret that can be used to install
-# private packages from GitHub.
+run: npm run start
 build:
   - npm install --omit=dev
   - npm run build
-
-# Specifies the command to run your app.
-run: npm run start
-
-# Settings to manage and configure a Firebase App Hosting backend.
-# https://firebase.google.com/docs/app-hosting/configure
-
 runConfig:
-  # Increase this value if you'd like to automatically spin up
-  # more instances in response to increased traffic.
   maxInstances: 1
