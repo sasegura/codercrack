@@ -11,31 +11,33 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ContactForm } from '@/components/contact-form';
 import { LeadFormStepper } from '@/components/lead-form-stepper';
+import { useLanguage } from '@/context/language-context';
 
 export default function Home() {
+  const { t } = useLanguage();
 
   const services = [
-    { id: "web_portfolio", icon: Codepen, title: "Websites & Portfolios", description: "Professional online presence with high-performance static or dynamic sites." },
-    { id: "landing_pages", icon: Rocket, title: "High-Conversion Landing Pages", description: "Landing pages optimized for speed and conversion in marketing campaigns." },
-    { id: "web_apps", icon: LayoutDashboard, title: "Web Applications (SPAs)", description: "Internal tools, dashboards, and admin panels with React and Next.js." },
-    { id: "performance", icon: Gauge, title: "Performance Optimization", description: "Improving speed, accessibility, and overall performance of existing websites." },
-    { id: "migrations", icon: Replace, title: "Migrations & Refactoring", description: "Updating slow sites to modern technologies like React and Next.js." },
-    { id: "design_systems", icon: Library, title: "UI Design Systems", description: "Reusable component libraries to standardize styles and accelerate development." },
-    { id: "integrations", icon: Plug, title: "Complex Integrations", description: "Connection with APIs, e-commerce, payment gateways, and authentication systems." },
-    { id: "white_label", icon: Users, title: "White Label Services", description: "Collaboration and outsourcing of frontend development for digital agencies." },
-    { id: "maintenance", icon: Wrench, title: "Maintenance & Support", description: "Incremental improvements, support, and post-delivery updates." },
+    { id: "web_portfolio", icon: Codepen, title: t('services.web_portfolio.title'), description: t('services.web_portfolio.description') },
+    { id: "landing_pages", icon: Rocket, title: t('services.landing_pages.title'), description: t('services.landing_pages.description') },
+    { id: "web_apps", icon: LayoutDashboard, title: t('services.web_apps.title'), description: t('services.web_apps.description') },
+    { id: "performance", icon: Gauge, title: t('services.performance.title'), description: t('services.performance.description') },
+    { id: "migrations", icon: Replace, title: t('services.migrations.title'), description: t('services.migrations.description') },
+    { id: "design_systems", icon: Library, title: t('services.design_systems.title'), description: t('services.design_systems.description') },
+    { id: "integrations", icon: Plug, title: t('services.integrations.title'), description: t('services.integrations.description') },
+    { id: "white_label", icon: Users, title: t('services.white_label.title'), description: t('services.white_label.description') },
+    { id: "maintenance", icon: Wrench, title: t('services.maintenance.title'), description: t('services.maintenance.description') },
   ];
 
   const projects = [
-    { id: "portfolio-1", title: "SaaS Dashboard", description: "A data analytics platform for startups, with interactive visualizations and real-time performance.", tags: ["Next.js", "Tailwind CSS", "Recharts", "Firebase"] },
-    { id: "portfolio-2", title: "Landing Page for Mobile App", description: "A high-conversion landing page for a new mobile app, achieving a 40% increase in downloads.", tags: ["React", "Gatsby", "Contentful", "Framer Motion"] },
-    { id: "portfolio-3", title: "Fashion E-commerce", description: "Online store with a minimalist design, Stripe integration, and a smooth shopping experience.", tags: ["Next.js", "Shopify API", "Stripe", "Vercel"] },
+    { id: "portfolio-1", title: t('projects.portfolio_1.title'), description: t('projects.portfolio_1.description'), tags: ["Next.js", "Tailwind CSS", "Recharts", "Firebase"] },
+    { id: "portfolio-2", title: t('projects.portfolio_2.title'), description: t('projects.portfolio_2.description'), tags: ["React", "Gatsby", "Contentful", "Framer Motion"] },
+    { id: "portfolio-3", title: t('projects.portfolio_3.title'), description: t('projects.portfolio_3.description'), tags: ["Next.js", "Shopify API", "Stripe", "Vercel"] },
   ];
 
   const testimonials = [
-    { name: "Ana Perez", company: "CEO of TechFlow", quote: "The CoderCrack team transformed our idea into a functional and scalable web application. Their expertise in React is unmatched." },
-    { name: "Carlos Ruiz", company: "Marketing Director at Innovate", quote: "The new landing page has exceeded all our expectations. The loading speed is incredible, and conversions have skyrocketed." },
-    { name: "Laura Gomez", company: "Founder of Creative Co.", quote: "Working with them was a pleasure. They understood our vision perfectly and delivered a flawless and professional website." },
+    { name: "Ana Perez", company: "CEO of TechFlow", quote: t('testimonials.ana.quote') },
+    { name: "Carlos Ruiz", company: "Marketing Director at Innovate", quote: t('testimonials.carlos.quote') },
+    { name: "Laura Gomez", company: "Founder of Creative Co.", quote: t('testimonials.laura.quote') },
   ];
 
   const aboutMeImage = PlaceHolderImages.find(p => p.id === 'about-me');
@@ -47,22 +49,22 @@ export default function Home() {
          <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20 z-0"></div>
         <div className="container px-4 md:px-6 z-10 relative">
           <Badge variant="outline" className="mb-4 bg-primary/10 border-primary/20 text-primary font-medium">
-            Frontend Development with React.js and Next.js
+            {t('hero.badge')}
           </Badge>
           <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
-            High-Impact Frontend Development
+            {t('hero.title')}
           </h1>
           <p className="max-w-3xl mx-auto mt-6 text-lg md:text-xl text-muted-foreground">
-            We create fast, reliable web applications with an exceptional user experience that drive your business growth.
+            {t('hero.subtitle')}
           </p>
           <div className="mt-8 flex justify-center gap-4 flex-wrap">
             <Button size="lg" asChild>
               <Link href="#proyectos">
-                View Projects <ArrowRight className="ml-2 h-5 w-5" />
+                {t('hero.cta_projects')} <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="#lead-form">Free Consultation</Link>
+              <Link href="#lead-form">{t('hero.cta_consultation')}</Link>
             </Button>
           </div>
         </div>
@@ -72,9 +74,9 @@ export default function Home() {
       <section id="servicios" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Our Services</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('services.section_title')}</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
-              Custom solutions to take your digital presence to the next level.
+              {t('services.section_subtitle')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -99,9 +101,9 @@ export default function Home() {
       <section id="lead-form" className="py-20 md:py-28 bg-background">
         <div className="container px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Tell me about your Project</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('lead_form.section_title')}</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
-              Complete these short steps so I can better understand your needs.
+              {t('lead_form.section_subtitle')}
             </p>
           </div>
           <LeadFormStepper />
@@ -119,9 +121,9 @@ export default function Home() {
       <section id="proyectos" className="py-20 md:py-28 bg-background">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Featured Projects</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('projects.section_title')}</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground">
-              A showcase of our work and the impact we create.
+              {t('projects.section_subtitle')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -147,7 +149,7 @@ export default function Home() {
       <section id="testimonios" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">What our clients say</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('testimonials.section_title')}</h2>
           </div>
           <Carousel opts={{ loop: true }} className="max-w-4xl mx-auto">
             <CarouselContent>
@@ -185,14 +187,14 @@ export default function Home() {
               {aboutMeImage && <Image src={aboutMeImage.imageUrl} alt="Frontend Developer" data-ai-hint={aboutMeImage.imageHint} fill className="rounded-lg object-cover shadow-lg shadow-primary/10"/>}
             </div>
             <div>
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground mb-4">About Me</h2>
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground mb-4">{t('about.title')}</h2>
               <p className="text-muted-foreground mb-6 text-lg">
-                I am a passionate frontend developer dedicated to building modern, intuitive, and high-performance user interfaces. With years of experience in the React ecosystem, I specialize in transforming complex ideas into digital realities.
+                {t('about.paragraph')}
               </p>
               <div className="space-y-4">
-                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">Expertise in React.js & Next.js:</span> Development of robust and SEO-optimized applications.</p></div>
-                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">Focus on UX/UI:</span> Close collaboration with designers to create memorable user experiences.</p></div>
-                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">Performance Optimization:</span> Obsessed with loading speed and frontend efficiency.</p></div>
+                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">{t('about.expertise.title')}</span> {t('about.expertise.description')}</p></div>
+                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">{t('about.ux_ui.title')}</span> {t('about.ux_ui.description')}</p></div>
+                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">{t('about.performance.title')}</span> {t('about.performance.description')}</p></div>
               </div>
             </div>
           </div>
@@ -203,9 +205,9 @@ export default function Home() {
       <section id="contacto" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="max-w-2xl mx-auto text-center">
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Ready to start your project?</h2>
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('contact.title')}</h2>
               <p className="max-w-2xl mx-auto mt-4 mb-8 text-muted-foreground">
-                Contact me for a free consultation. Let's talk about how I can help you achieve your goals.
+                {t('contact.subtitle')}
               </p>
               <ContactForm />
           </div>

@@ -1,0 +1,194 @@
+{
+  "nav": {
+    "services": "Servicios",
+    "projects": "Proyectos",
+    "about": "Sobre Mí",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "badge": "Desarrollo Frontend con React.js y Next.js",
+    "title": "Desarrollo Frontend de Alto Impacto",
+    "subtitle": "Creamos aplicaciones web rápidas, fiables y con una experiencia de usuario excepcional que impulsan el crecimiento de tu negocio.",
+    "cta_projects": "Ver Proyectos",
+    "cta_consultation": "Consulta Gratuita"
+  },
+  "services": {
+    "section_title": "Nuestros Servicios",
+    "section_subtitle": "Soluciones a medida para llevar tu presencia digital al siguiente nivel.",
+    "web_portfolio": {
+      "title": "Sitios Web y Portafolios",
+      "description": "Presencia online profesional con sitios estáticos o dinámicos de alto rendimiento."
+    },
+    "landing_pages": {
+      "title": "Landing Pages de Alta Conversión",
+      "description": "Páginas de aterrizaje optimizadas para velocidad y conversión en campañas de marketing."
+    },
+    "web_apps": {
+      "title": "Aplicaciones Web (SPAs)",
+      "description": "Herramientas internas, dashboards y paneles de administración con React y Next.js."
+    },
+    "performance": {
+      "title": "Optimización de Rendimiento",
+      "description": "Mejora de la velocidad, accesibilidad y rendimiento general de sitios web existentes."
+    },
+    "migrations": {
+      "title": "Migraciones y Refactorización",
+      "description": "Actualización de sitios lentos a tecnologías modernas como React y Next.js."
+    },
+    "design_systems": {
+      "title": "Sistemas de Diseño UI",
+      "description": "Librerías de componentes reutilizables para estandarizar estilos y acelerar el desarrollo."
+    },
+    "integrations": {
+      "title": "Integraciones Complejas",
+      "description": "Conexión con APIs, e-commerce, pasarelas de pago y sistemas de autenticación."
+    },
+    "white_label": {
+      "title": "Servicios Marca Blanca",
+      "description": "Colaboración y externalización de desarrollo frontend para agencias digitales."
+    },
+    "maintenance": {
+      "title": "Mantenimiento y Soporte",
+      "description": "Mejoras incrementales, soporte y actualizaciones post-entrega."
+    }
+  },
+  "lead_form": {
+    "section_title": "Cuéntame sobre tu Proyecto",
+    "section_subtitle": "Completa estos breves pasos para que pueda entender mejor tus necesidades.",
+    "steps": {
+      "project_type": "Tipo de Proyecto",
+      "details": "Detalles",
+      "contact": "Contacto"
+    },
+    "step1": {
+      "title": "¿Qué tipo de proyecto tienes en mente?",
+      "options": {
+        "corporate": "Sitio Web Corporativo",
+        "ecommerce": "Tienda E-commerce",
+        "webapp": "Aplicación Web a Medida",
+        "landing": "Landing Page",
+        "other": "Otro"
+      }
+    },
+    "step2": {
+      "design": {
+        "label": "¿Ya tienes un diseño UI/UX?",
+        "yes": "Sí",
+        "no": "No"
+      },
+      "deadline": {
+        "label": "¿Cuál es tu plazo estimado?",
+        "option1": "~1 mes",
+        "option2": "2-3 meses",
+        "option3": "Flexible"
+      },
+      "budget": {
+        "label": "¿Cuál es tu presupuesto aproximado?"
+      }
+    },
+    "step3": {
+      "name": {
+        "label": "Nombre"
+      },
+      "email": {
+        "label": "Correo electrónico"
+      },
+      "company": {
+        "label": "Empresa (Opcional)"
+      },
+      "message": {
+        "label": "Mensaje o descripción adicional"
+      }
+    },
+    "buttons": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "submit": "Enviar Solicitud"
+    },
+    "submitted": {
+      "title": "¡Gracias por tu interés!",
+      "description": "He recibido tu solicitud y me pondré en contacto contigo en 24 horas para hablar de tu proyecto."
+    }
+  },
+  "audit": {
+    "title": "Auditoría de Rendimiento Gratuita",
+    "description": "Introduce la URL de tu sitio web para obtener un análisis de rendimiento detallado, identificando cuellos de botella y oportunidades de mejora.",
+    "button_text": "Generar Reporte",
+    "powered_by": "Potenciado por IA Generativa",
+    "analyzing": "Analizando",
+    "results_title": "Resultados del Análisis"
+  },
+  "projects": {
+    "section_title": "Proyectos Destacados",
+    "section_subtitle": "Una muestra de nuestro trabajo y el impacto que creamos.",
+    "portfolio_1": {
+      "title": "Dashboard SaaS",
+      "description": "Una plataforma de análisis de datos para startups, con visualizaciones interactivas y rendimiento en tiempo real."
+    },
+    "portfolio_2": {
+      "title": "Landing Page para App Móvil",
+      "description": "Una landing page de alta conversión para una nueva aplicación móvil, logrando un aumento del 40% en las descargas."
+    },
+    "portfolio_3": {
+      "title": "E-commerce de Moda",
+      "description": "Tienda online con un diseño minimalista, integración con Stripe y una experiencia de compra fluida."
+    }
+  },
+  "testimonials": {
+    "section_title": "Lo que dicen nuestros clientes",
+    "ana": {
+      "quote": "El equipo de CoderCrack transformó nuestra idea en una aplicación web funcional y escalable. Su experiencia en React es inigualable."
+    },
+    "carlos": {
+      "quote": "La nueva landing page ha superado todas nuestras expectativas. La velocidad de carga es increíble y las conversiones se han disparado."
+    },
+    "laura": {
+      "quote": "Trabajar con ellos fue un placer. Entendieron nuestra visión a la perfección y entregaron un sitio web impecable y profesional."
+    }
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "paragraph": "Soy un apasionado desarrollador frontend dedicado a construir interfaces de usuario modernas, intuitivas y de alto rendimiento. Con años de experiencia en el ecosistema de React, me especializo en transformar ideas complejas en realidades digitales.",
+    "expertise": {
+      "title": "Experiencia en React.js & Next.js:",
+      "description": "Desarrollo de aplicaciones robustas y optimizadas para SEO."
+    },
+    "ux_ui": {
+      "title": "Enfoque en UX/UI:",
+      "description": "Colaboración estrecha con diseñadores para crear experiencias de usuario memorables."
+    },
+    "performance": {
+      "title": "Optimización de Rendimiento:",
+      "description": "Obsesionado con la velocidad de carga y la eficiencia del frontend."
+    }
+  },
+  "contact": {
+    "title": "¿Listo para empezar tu proyecto?",
+    "subtitle": "Contáctame para una consulta gratuita. Hablemos sobre cómo puedo ayudarte a alcanzar tus objetivos.",
+    "placeholder_name": "Tu nombre",
+    "placeholder_email": "Tu correo electrónico",
+    "placeholder_message": "¿Cómo puedo ayudarte?",
+    "send_button": "Enviar Mensaje",
+    "sending": "Enviando"
+  },
+  "toast": {
+    "error_title": "Error",
+    "contact_success_title": "Mensaje Enviado",
+    "contact_success_description": "¡Gracias por tu mensaje! Te responderé pronto.",
+    "form_submitted_title": "¡Formulario Enviado!",
+    "form_submitted_description": "Gracias por tu interés. Te responderé pronto.",
+    "audit_success_title": "Reporte generado con éxito.",
+    "audit_error_description": "Ocurrió un error al generar el reporte. Por favor, inténtalo de nuevo."
+  },
+  "validation": {
+    "name_min": "El nombre debe tener al menos 2 caracteres.",
+    "email_invalid": "Por favor, introduce una dirección de correo electrónico válida.",
+    "message_min": "El mensaje debe tener al menos 10 caracteres.",
+    "error_default": "Error de validación.",
+    "project_type": "Debes seleccionar un tipo de proyecto.",
+    "design_option": "Debes seleccionar una opción.",
+    "deadline": "Debes seleccionar un plazo.",
+    "budget": "Debes seleccionar un presupuesto.",
+    "url_invalid": "Por favor, introduce una URL válida."
+  }
+}

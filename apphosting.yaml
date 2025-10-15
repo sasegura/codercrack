@@ -3,3 +3,7 @@
 runtime: nodejs20
 runConfig:
   maxInstances: 1
+build:
+  run:
+  - npm install
+  - npm run build

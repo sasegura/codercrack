@@ -1,0 +1,194 @@
+{
+  "nav": {
+    "services": "Services",
+    "projects": "Projects",
+    "about": "About Me",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Frontend Development with React.js and Next.js",
+    "title": "High-Impact Frontend Development",
+    "subtitle": "We create fast, reliable web applications with an exceptional user experience that drive your business growth.",
+    "cta_projects": "View Projects",
+    "cta_consultation": "Free Consultation"
+  },
+  "services": {
+    "section_title": "Our Services",
+    "section_subtitle": "Custom solutions to take your digital presence to the next level.",
+    "web_portfolio": {
+      "title": "Websites & Portfolios",
+      "description": "Professional online presence with high-performance static or dynamic sites."
+    },
+    "landing_pages": {
+      "title": "High-Conversion Landing Pages",
+      "description": "Landing pages optimized for speed and conversion in marketing campaigns."
+    },
+    "web_apps": {
+      "title": "Web Applications (SPAs)",
+      "description": "Internal tools, dashboards, and admin panels with React and Next.js."
+    },
+    "performance": {
+      "title": "Performance Optimization",
+      "description": "Improving speed, accessibility, and overall performance of existing websites."
+    },
+    "migrations": {
+      "title": "Migrations & Refactoring",
+      "description": "Updating slow sites to modern technologies like React and Next.js."
+    },
+    "design_systems": {
+      "title": "UI Design Systems",
+      "description": "Reusable component libraries to standardize styles and accelerate development."
+    },
+    "integrations": {
+      "title": "Complex Integrations",
+      "description": "Connection with APIs, e-commerce, payment gateways, and authentication systems."
+    },
+    "white_label": {
+      "title": "White Label Services",
+      "description": "Collaboration and outsourcing of frontend development for digital agencies."
+    },
+    "maintenance": {
+      "title": "Maintenance & Support",
+      "description": "Incremental improvements, support, and post-delivery updates."
+    }
+  },
+  "lead_form": {
+    "section_title": "Tell me about your Project",
+    "section_subtitle": "Complete these short steps so I can better understand your needs.",
+    "steps": {
+      "project_type": "Project Type",
+      "details": "Details",
+      "contact": "Contact"
+    },
+    "step1": {
+      "title": "What type of project do you have in mind?",
+      "options": {
+        "corporate": "Corporate Website",
+        "ecommerce": "E-commerce Store",
+        "webapp": "Custom Web App",
+        "landing": "Landing Page",
+        "other": "Other"
+      }
+    },
+    "step2": {
+      "design": {
+        "label": "Do you have a UI/UX design already?",
+        "yes": "Yes",
+        "no": "No"
+      },
+      "deadline": {
+        "label": "What is your estimated deadline?",
+        "option1": "~1 month",
+        "option2": "2-3 months",
+        "option3": "Flexible"
+      },
+      "budget": {
+        "label": "What is your approximate budget?"
+      }
+    },
+    "step3": {
+      "name": {
+        "label": "Name"
+      },
+      "email": {
+        "label": "Email"
+      },
+      "company": {
+        "label": "Company (Optional)"
+      },
+      "message": {
+        "label": "Message or additional description"
+      }
+    },
+    "buttons": {
+      "previous": "Previous",
+      "next": "Next",
+      "submit": "Submit Request"
+    },
+    "submitted": {
+      "title": "Thank you for your interest!",
+      "description": "I have received your request and will contact you within 24 hours to discuss your project."
+    }
+  },
+  "audit": {
+    "title": "Free Performance Audit",
+    "description": "Enter your website's URL to get a detailed performance analysis, identifying bottlenecks and improvement opportunities.",
+    "button_text": "Generate Report",
+    "powered_by": "Powered by Generative AI",
+    "analyzing": "Analyzing",
+    "results_title": "Analysis Results"
+  },
+  "projects": {
+    "section_title": "Featured Projects",
+    "section_subtitle": "A showcase of our work and the impact we create.",
+    "portfolio_1": {
+      "title": "SaaS Dashboard",
+      "description": "A data analytics platform for startups, with interactive visualizations and real-time performance."
+    },
+    "portfolio_2": {
+      "title": "Landing Page for Mobile App",
+      "description": "A high-conversion landing page for a new mobile app, achieving a 40% increase in downloads."
+    },
+    "portfolio_3": {
+      "title": "Fashion E-commerce",
+      "description": "Online store with a minimalist design, Stripe integration, and a smooth shopping experience."
+    }
+  },
+  "testimonials": {
+    "section_title": "What our clients say",
+    "ana": {
+      "quote": "The CoderCrack team transformed our idea into a functional and scalable web application. Their expertise in React is unmatched."
+    },
+    "carlos": {
+      "quote": "The new landing page has exceeded all our expectations. The loading speed is incredible, and conversions have skyrocketed."
+    },
+    "laura": {
+      "quote": "Working with them was a pleasure. They understood our vision perfectly and delivered a flawless and professional website."
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "paragraph": "I am a passionate frontend developer dedicated to building modern, intuitive, and high-performance user interfaces. With years of experience in the React ecosystem, I specialize in transforming complex ideas into digital realities.",
+    "expertise": {
+      "title": "Expertise in React.js & Next.js:",
+      "description": "Development of robust and SEO-optimized applications."
+    },
+    "ux_ui": {
+      "title": "Focus on UX/UI:",
+      "description": "Close collaboration with designers to create memorable user experiences."
+    },
+    "performance": {
+      "title": "Performance Optimization:",
+      "description": "Obsessed with loading speed and frontend efficiency."
+    }
+  },
+  "contact": {
+    "title": "Ready to start your project?",
+    "subtitle": "Contact me for a free consultation. Let's talk about how I can help you achieve your goals.",
+    "placeholder_name": "Your name",
+    "placeholder_email": "Your email",
+    "placeholder_message": "How can I help you?",
+    "send_button": "Send Message",
+    "sending": "Sending"
+  },
+  "toast": {
+    "error_title": "Error",
+    "contact_success_title": "Message Sent",
+    "contact_success_description": "Thank you for your message! I will get back to you soon.",
+    "form_submitted_title": "Form Submitted!",
+    "form_submitted_description": "Thank you for your interest. I will get back to you soon.",
+    "audit_success_title": "Report generated successfully.",
+    "audit_error_description": "An error occurred while generating the report. Please try again."
+  },
+  "validation": {
+    "name_min": "Name must be at least 2 characters long.",
+    "email_invalid": "Please enter a valid email address.",
+    "message_min": "Message must be at least 10 characters long.",
+    "error_default": "Validation error.",
+    "project_type": "You must select a project type.",
+    "design_option": "You must select an option.",
+    "deadline": "You must select a deadline.",
+    "budget": "You must select a budget.",
+    "url_invalid": "Please enter a valid URL."
+  }
+}

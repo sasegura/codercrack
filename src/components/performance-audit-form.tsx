@@ -8,6 +8,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Loader2, Sparkles } from 'lucide-react';
 import { z } from 'zod';
 import { generatePerformanceReport } from '@/ai/flows/generate-performance-report';
+import { useLanguage } from '@/context/language-context';
 
 interface PerformanceAuditState {
     message: string | null;
@@ -15,16 +16,17 @@ interface PerformanceAuditState {
     success: boolean;
 }
 
-function SubmitButton({ isPending }: { isPending: boolean }) {
+function SubmitButton({ isPending, text }: { isPending: boolean, text: string }) {
+  const { t } = useLanguage();
   return (
     <Button type="submit" disabled={isPending} className="w-full sm:w-auto">
       {isPending ? (
         <>
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          Analyzing...
+          {t('audit.analyzing')}...
         </>
       ) : (
-        'Generate Report'
+        text
       )}
     </Button>
   );
@@ -33,9 +35,10 @@ function SubmitButton({ isPending }: { isPending: boolean }) {
 export default function PerformanceAuditForm() {
   const [isPending, startTransition] = useTransition();
   const [state, setState] = useState<PerformanceAuditState>({ message: null, report: null, success: false });
+  const { t } = useLanguage();
   
   const auditUrlSchema = z.object({
-    url: z.string().url('Please enter a valid URL.'),
+    url: z.string().url(t('validation.url_invalid')),
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -49,7 +52,7 @@ export default function PerformanceAuditForm() {
 
         if (!validatedFields.success) {
             setState({
-                message: 'Please enter a valid URL.',
+                message: t('validation.url_invalid'),
                 report: null,
                 success: false,
             });
@@ -60,14 +63,14 @@ export default function PerformanceAuditForm() {
             const result = await generatePerformanceReport(validatedFields.data);
 
             setState({
-                message: 'Report generated successfully.',
+                message: t('toast.audit_success_title'),
                 report: result.report,
                 success: true,
             });
         } catch (e: any) {
             console.error(e);
             setState({
-                message: 'An error occurred while generating the report. Please try again.',
+                message: t('toast.audit_error_description'),
                 report: null,
                 success: false,
             });
@@ -83,8 +86,8 @@ export default function PerformanceAuditForm() {
             <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit mb-4">
               <Sparkles className="h-8 w-8 text-primary" />
             </div>
-            <CardTitle className="font-headline text-2xl md:text-3xl text-foreground">Free Performance Audit</CardTitle>
-            <CardDescription className="text-base text-muted-foreground">Enter your website's URL to get a detailed performance analysis, identifying bottlenecks and improvement opportunities.</CardDescription>
+            <CardTitle className="font-headline text-2xl md:text-3xl text-foreground">{t('audit.title')}</CardTitle>
+            <CardDescription className="text-base text-muted-foreground">{t('audit.description')}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col sm:flex-row gap-2">
@@ -95,18 +98,18 @@ export default function PerformanceAuditForm() {
                 className="flex-grow text-base"
                 disabled={isPending}
               />
-              <SubmitButton isPending={isPending} />
+              <SubmitButton isPending={isPending} text={t('audit.button_text')} />
             </div>
           </CardContent>
           <CardFooter>
-            <p className="text-sm text-muted-foreground w-full text-center">Powered by Generative AI</p>
+            <p className="text-sm text-muted-foreground w-full text-center">{t('audit.powered_by')}</p>
           </CardFooter>
         </form>
       </Card>
 
       {!state.success && state.message && (
         <Alert variant="destructive" className="max-w-3xl mx-auto">
-          <AlertTitle>Error</AlertTitle>
+          <AlertTitle>{t('toast.error_title')}</AlertTitle>
           <AlertDescription>{state.message}</AlertDescription>
         </Alert>
       )}
@@ -114,7 +117,7 @@ export default function PerformanceAuditForm() {
       {state.report && (
         <Card className="max-w-3xl mx-auto mt-8">
           <CardHeader>
-            <CardTitle>Analysis Results</CardTitle>
+            <CardTitle>{t('audit.results_title')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-headings:text-foreground prose-strong:text-foreground whitespace-pre-wrap">

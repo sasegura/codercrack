@@ -8,17 +8,19 @@ import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react';
 import { z } from 'zod';
+import { useLanguage } from '@/context/language-context';
 
-function SubmitButton({ isPending }: { isPending: boolean }) {
+function SubmitButton({ isPending, text }: { isPending: boolean, text: string }) {
+  const { t } = useLanguage();
   return (
     <Button type="submit" className="w-full" size="lg" disabled={isPending}>
       {isPending ? (
         <>
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          Sending...
+          {t('contact.sending')}...
         </>
       ) : (
-        'Send Message'
+        text
       )}
     </Button>
   );
@@ -28,11 +30,12 @@ export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
+  const { t } = useLanguage();
 
   const contactSchema = z.object({
-      name: z.string().min(2, 'Name must be at least 2 characters long.'),
-      email: z.string().email('Please enter a valid email address.'),
-      message: z.string().min(10, 'Message must be at least 10 characters long.'),
+      name: z.string().min(2, t('validation.name_min')),
+      email: z.string().email(t('validation.email_invalid')),
+      message: z.string().min(10, t('validation.message_min')),
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -49,8 +52,8 @@ export function ContactForm() {
       if (!validatedFields.success) {
           const firstError = Object.values(validatedFields.error.flatten().fieldErrors)[0]?.[0];
           toast({
-            title: 'Error',
-            description: firstError ?? 'Validation error.',
+            title: t('toast.error_title'),
+            description: firstError ?? t('validation.error_default'),
             variant: 'destructive',
           });
           return;
@@ -60,8 +63,8 @@ export function ContactForm() {
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       toast({
-        title: 'Message Sent',
-        description: 'Thank you for your message! I will get back to you soon.',
+        title: t('toast.contact_success_title'),
+        description: t('toast.contact_success_description'),
         variant: 'default',
       });
       formRef.current?.reset();
@@ -73,14 +76,14 @@ export function ContactForm() {
       <CardContent className="p-6">
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Input id="name" name="name" placeholder="Your name" required className="bg-background/50" disabled={isPending} />
+            <Input id="name" name="name" placeholder={t('contact.placeholder_name')} required className="bg-background/50" disabled={isPending} />
           </div>
           <div className="space-y-2">
             <Input
               id="email"
               name="email"
               type="email"
-              placeholder="Your email"
+              placeholder={t('contact.placeholder_email')}
               required
               className="bg-background/50"
               disabled={isPending}
@@ -90,14 +93,14 @@ export function ContactForm() {
             <Textarea
               id="message"
               name="message"
-              placeholder="How can I help you?"
+              placeholder={t('contact.placeholder_message')}
               required
               rows={5}
               className="bg-background/50"
               disabled={isPending}
             />
           </div>
-          <SubmitButton isPending={isPending} />
+          <SubmitButton isPending={isPending} text={t('contact.send_button')} />
         </form>
       </CardContent>
     </Card>
