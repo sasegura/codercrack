@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} dark !scroll-smooth`}>
-      <body className="font-body antialiased">
+      <body className="font-body antialiased max-w-7xl mx-auto">
           <Header />
           <main className="bg-background">
             {children}
