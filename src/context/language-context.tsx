@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, ReactNode, useCallback, useEffect } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useCallback } from 'react';
 import { getTranslator, Language } from '@/lib/i18n';
 
 type LanguageContextType = {
@@ -13,14 +13,6 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>('en');
-
-  useEffect(() => {
-    // This effect runs only on the client
-    const browserLang = navigator.language.split('-')[0];
-    if (browserLang === 'es') {
-      setLanguage('es');
-    }
-  }, []);
 
   const t = useCallback(getTranslator(language), [language]);
 
