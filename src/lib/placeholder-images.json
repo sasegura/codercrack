@@ -1,22 +1,46 @@
 {
   "placeholderImages": [
     {
-      "id": "portfolio-1",
-      "description": "Screenshot of a SaaS dashboard project",
+      "id": "project-fintrack",
+      "description": "Screenshot of FinTrack app",
       "imageUrl": "https://picsum.photos/seed/p1/600/400",
-      "imageHint": "SaaS dashboard"
+      "imageHint": "finance dashboard"
     },
     {
-      "id": "portfolio-2",
-      "description": "Screenshot of a marketing landing page",
+      "id": "project-globalroamer",
+      "description": "Screenshot of GlobalRoamer app",
       "imageUrl": "https://picsum.photos/seed/p2/600/400",
-      "imageHint": "landing page"
+      "imageHint": "travel destination"
     },
     {
-      "id": "portfolio-3",
-      "description": "Screenshot of an e-commerce website",
+      "id": "project-taskzen",
+      "description": "Screenshot of TaskZen app",
       "imageUrl": "https://picsum.photos/seed/p3/600/400",
-      "imageHint": "ecommerce website"
+      "imageHint": "kanban board"
+    },
+    {
+      "id": "project-chatterbox",
+      "description": "Screenshot of Chatterbox app",
+      "imageUrl": "https://picsum.photos/seed/p4/600/400",
+      "imageHint": "chat application"
+    },
+    {
+      "id": "project-2",
+      "description": "Screenshot of a social network app",
+      "imageUrl": "https://picsum.photos/seed/p5/600/400",
+      "imageHint": "social network"
+    },
+    {
+      "id": "project-3",
+      "description": "Screenshot of a data visualization tool",
+      "imageUrl": "https://picsum.photos/seed/p6/600/400",
+      "imageHint": "data charts"
+    },
+    {
+      "id": "project-4",
+      "description": "Screenshot of an e-commerce platform",
+      "imageUrl": "https://picsum.photos/seed/p7/600/400",
+      "imageHint": "ecommerce store"
     },
     {
       "id": "about-me",

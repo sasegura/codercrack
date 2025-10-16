@@ -113,17 +113,33 @@
   "projects": {
     "section_title": "Proyectos Destacados",
     "section_subtitle": "Una muestra de nuestro trabajo y el impacto que creamos.",
-    "portfolio_1": {
-      "title": "Dashboard SaaS",
-      "description": "Una plataforma de análisis de datos para startups, con visualizaciones interactivas y rendimiento en tiempo real."
+    "project-fintrack": {
+      "title": "FinTrack - Panel de Finanzas Personales",
+      "description": "FinTrack es una aplicación web moderna diseñada para ayudar a los usuarios a realizar un seguimiento exhaustivo de sus finanzas personales. El objetivo principal de la aplicación es permitir la gestión de ingresos y gastos, la visualización de los hábitos de gasto a través de gráficos interactivos, y la revisión de un historial claro de transacciones recientes. Este proyecto representa una solución integral para la gestión financiera personal, enfocándose en una experiencia de usuario fluida y un diseño adaptable."
     },
-    "portfolio_2": {
-      "title": "Landing Page para App Móvil",
-      "description": "Una landing page de alta conversión para una nueva aplicación móvil, logrando un aumento del 40% en las descargas."
+    "project-globalroamer": {
+      "title": "GlobalRoamer: Guía de Destinos con IA",
+      "description": "GlobalRoamer es una aplicación web creada específicamente para ayudar a los nómadas digitales. La funcionalidad clave del proyecto es asistir a los usuarios a encontrar su próximo destino ideal basándose en sus preferencias personales. Esta guía se logra utilizando un asistente de Inteligencia Artificial."
     },
-    "portfolio_3": {
-      "title": "E-commerce de Moda",
-      "description": "Tienda online con un diseño minimalista, integración con Stripe y una experiencia de compra fluida."
+    "project-taskzen": {
+      "title": "TaskZen - Gestión de Tareas Estilo Kanban",
+      "description": "TaskZen es una aplicación de gestión de tareas moderna e intuitiva. Su objetivo es proporcionar una herramienta eficiente con una interfaz limpia. Cuenta con un tablero Kanban, funcionalidad de arrastrar y soltar y conocimientos y recomendaciones basados en IA mediante Genkit."
+    },
+    "project-chatterbox": {
+      "title": "Chatterbox: Aplicación de Chat en Tiempo Real con IA",
+      "description": "Chatterbox es una aplicación de chat en tiempo real construida utilizando Next.js en Firebase Studio. El proyecto se enfoca en ofrecer una interfaz moderna y responsiva que permite a los usuarios comunicarse con sus contactos de manera eficiente. Su característica más destacada es la integración de sugerencias de respuestas impulsadas por inteligencia artificial (IA)."
+    },
+    "project-2": {
+      "title": "Proyecto Beta",
+      "description": "Una aplicación de red social 'mobile-first' diseñada para conectar a personas con ideas afines."
+    },
+    "project-3": {
+      "title": "Proyecto Gamma",
+      "description": "Una herramienta avanzada de visualización de datos que convierte conjuntos de datos complejos en información comprensible."
+    },
+    "project-4": {
+      "title": "Proyecto Delta",
+      "description": "Una plataforma de comercio electrónico elegante y moderna con un enfoque en la experiencia del usuario y el rendimiento."
     }
   },
   "testimonials": {
@@ -184,5 +200,3 @@
     "url_invalid": "Por favor, introduce una URL válida."
   }
 }
-
-    

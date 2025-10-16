@@ -28,9 +28,13 @@ export default function Home() {
   ];
 
   const projects = [
-    { id: "portfolio-1", title: t('projects.portfolio_1.title'), description: t('projects.portfolio_1.description'), tags: ["Next.js", "Tailwind CSS", "Recharts", "Firebase"] },
-    { id: "portfolio-2", title: t('projects.portfolio_2.title'), description: t('projects.portfolio_2.description'), tags: ["React", "Gatsby", "Contentful", "Framer Motion"] },
-    { id: "portfolio-3", title: t('projects.portfolio_3.title'), description: t('projects.portfolio_3.description'), tags: ["Next.js", "Shopify API", "Stripe", "Vercel"] },
+    { id: "project-fintrack", title: t('projects.project-fintrack.title'), description: t('projects.project-fintrack.description'), tags: ["Next.js", "TypeScript", "Tailwind CSS", "Recharts"] },
+    { id: "project-globalroamer", title: t('projects.project-globalroamer.title'), description: t('projects.project-globalroamer.description'), tags: ["Next.js", "Genkit", "Google AI", "Tailwind CSS"] },
+    { id: "project-taskzen", title: t('projects.project-taskzen.title'), description: t('projects.project-taskzen.description'), tags: ["React", "Framer Motion", "Genkit", "Firebase"] },
+    { id: "project-chatterbox", title: t('projects.project-chatterbox.title'), description: t('projects.project-chatterbox.description'), tags: ["Next.js", "Firebase", "Genkit", "Tailwind CSS"] },
+    { id: "project-2", title: t('projects.project-2.title'), description: t('projects.project-2.description'), tags: ["React Native", "Firebase", "Mobile First"] },
+    { id: "project-3", title: t('projects.project-3.title'), description: t('projects.project-3.description'), tags: ["D3.js", "React", "Data Visualization"] },
+    { id: "project-4", title: t('projects.project-4.title'), description: t('projects.project-4.description'), tags: ["Shopify", "Next.js", "Stripe"] },
   ];
 
   const testimonials = [
@@ -208,5 +212,3 @@ export default function Home() {
     </>
   );
 }
-
-    
