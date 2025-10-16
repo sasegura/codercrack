@@ -20,7 +20,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "CoderCrack | High-Impact Frontend Development",
-  description: "We create fast, reliable web applications with an exceptional user experience that drive business growth.",
+  description: "We create fast, reliable web applications with exceptional user experiences that help businesses grow and succeed online.",
   keywords: ["React Developer", "frontend performance React", "React web applications", "Next.js developer", "freelance developer"]
 };
 
