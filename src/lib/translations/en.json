@@ -128,18 +128,6 @@
     "project-chatterbox": {
       "title": "Chatterbox: Real-Time AI Chat Application",
       "description": "Chatterbox is a real-time chat application built using Next.js in Firebase Studio. The project focuses on providing a modern and responsive interface that allows users to communicate with their contacts efficiently. Its most outstanding feature is the integration of AI-powered response suggestions."
-    },
-    "project-2": {
-      "title": "Project Beta",
-      "description": "A mobile-first social networking app designed to connect like-minded individuals."
-    },
-    "project-3": {
-      "title": "Project Gamma",
-      "description": "An advanced data visualization tool that turns complex datasets into understandable insights."
-    },
-    "project-4": {
-      "title": "Project Delta",
-      "description": "A sleek and modern e-commerce platform with a focus on user experience and performance."
     }
   },
   "testimonials": {
@@ -200,3 +188,5 @@
     "url_invalid": "Please enter a valid URL."
   }
 }
+
+    

@@ -25,24 +25,6 @@
       "imageHint": "chat application"
     },
     {
-      "id": "project-2",
-      "description": "Screenshot of a social network app",
-      "imageUrl": "/project-beta.png",
-      "imageHint": "social network"
-    },
-    {
-      "id": "project-3",
-      "description": "Screenshot of a data visualization tool",
-      "imageUrl": "/project-gamma.png",
-      "imageHint": "data charts"
-    },
-    {
-      "id": "project-4",
-      "description": "Screenshot of an e-commerce platform",
-      "imageUrl": "/project-delta.png",
-      "imageHint": "boutique shop"
-    },
-    {
       "id": "about-me",
       "description": "Professional headshot of the developer",
       "imageUrl": "/about-me.png",
