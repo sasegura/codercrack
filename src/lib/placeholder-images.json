@@ -3,13 +3,13 @@
     {
       "id": "project-fintrack",
       "description": "Screenshot of FinTrack app",
-      "imageUrl": "https://picsum.photos/seed/fintrack-app/600/400",
+      "imageUrl": "https://picsum.photos/seed/fintrack-dashboard/600/400",
       "imageHint": "finance dashboard"
     },
     {
       "id": "project-globalroamer",
       "description": "Screenshot of GlobalRoamer app",
-      "imageUrl": "https://picsum.photos/seed/p2/600/400",
+      "imageUrl": "https://picsum.photos/seed/globalroamer-app/600/400",
       "imageHint": "travel destination"
     },
     {
@@ -21,7 +21,7 @@
     {
       "id": "project-chatterbox",
       "description": "Screenshot of Chatterbox app",
-      "imageUrl": "https://picsum.photos/seed/chatter/600/400",
+      "imageUrl": "https://picsum.photos/seed/chatter-app/600/400",
       "imageHint": "chat application"
     },
     {
@@ -39,7 +39,7 @@
     {
       "id": "project-4",
       "description": "Screenshot of an e-commerce platform",
-      "imageUrl": "https://picsum.photos/seed/clothing-store/600/400",
+      "imageUrl": "https://picsum.photos/seed/boutique-shop/600/400",
       "imageHint": "boutique shop"
     },
     {
