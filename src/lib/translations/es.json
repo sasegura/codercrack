@@ -110,14 +110,6 @@
       "description": "He recibido tu solicitud y me pondré en contacto contigo en 24 horas para hablar de tu proyecto."
     }
   },
-  "audit": {
-    "title": "Auditoría de Rendimiento Gratuita",
-    "description": "Introduce la URL de tu sitio web para obtener un análisis de rendimiento detallado, identificando cuellos de botella y oportunidades de mejora.",
-    "button_text": "Generar Reporte",
-    "powered_by": "Potenciado por IA Generativa",
-    "analyzing": "Analizando",
-    "results_title": "Resultados del Análisis"
-  },
   "projects": {
     "section_title": "Proyectos Destacados",
     "section_subtitle": "Una muestra de nuestro trabajo y el impacto que creamos.",
@@ -192,3 +184,5 @@
     "url_invalid": "Por favor, introduce una URL válida."
   }
 }
+
+    

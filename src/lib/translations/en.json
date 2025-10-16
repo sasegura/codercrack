@@ -110,14 +110,6 @@
       "description": "I have received your request and will contact you within 24 hours to discuss your project."
     }
   },
-  "audit": {
-    "title": "Free Performance Audit",
-    "description": "Enter your website's URL to get a detailed performance analysis, identifying bottlenecks and improvement opportunities.",
-    "button_text": "Generate Report",
-    "powered_by": "Powered by Generative AI",
-    "analyzing": "Analyzing",
-    "results_title": "Analysis Results"
-  },
   "projects": {
     "section_title": "Featured Projects",
     "section_subtitle": "A showcase of our work and the impact we create.",
@@ -192,3 +184,5 @@
     "url_invalid": "Please enter a valid URL."
   }
 }
+
+    

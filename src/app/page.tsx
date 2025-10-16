@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import PerformanceAuditForm from '@/components/performance-audit-form';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -110,15 +109,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Performance Audit Section */}
-      <section id="auditoria" className="py-20 md:py-28 bg-secondary">
-          <div className="container px-4 md:px-6">
-              <PerformanceAuditForm />
-          </div>
-      </section>
-
       {/* Portfolio Section */}
-      <section id="proyectos" className="py-20 md:py-28 bg-background">
+      <section id="proyectos" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('projects.section_title')}</h2>
@@ -130,7 +122,7 @@ export default function Home() {
             {projects.map((project) => {
               const image = PlaceHolderImages.find(p => p.id === project.id);
               return (
-              <Card key={project.id} className="overflow-hidden group bg-secondary/50 border-primary/10">
+              <Card key={project.id} className="overflow-hidden group bg-background/50 border-primary/10">
                 {image && <div className="overflow-hidden"><Image src={image.imageUrl} alt={project.title} width={600} height={400} data-ai-hint={image.imageHint} className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"/></div>}
                 <CardContent className="p-6">
                   <h3 className="text-xl font-headline font-semibold mb-2">{project.title}</h3>
@@ -146,7 +138,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonios" className="py-20 md:py-28 bg-secondary">
+      <section id="testimonios" className="py-20 md:py-28 bg-background">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('testimonials.section_title')}</h2>
@@ -155,7 +147,7 @@ export default function Home() {
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index}>
-                  <Card className="bg-background">
+                  <Card className="bg-secondary">
                     <CardContent className="p-8 text-center">
                       <p className="text-lg italic mb-6 text-foreground/80">"{testimonial.quote}"</p>
                       <div className="flex items-center justify-center">
@@ -180,7 +172,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="sobre-mi" className="py-20 md:py-28 bg-background">
+      <section id="sobre-mi" className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-square max-w-md mx-auto">
@@ -202,7 +194,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contacto" className="py-20 md:py-28 bg-secondary">
+      <section id="contacto" className="py-20 md:py-28 bg-background">
         <div className="container px-4 md:px-6">
           <div className="max-w-2xl mx-auto text-center">
               <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">{t('contact.title')}</h2>
@@ -216,3 +208,5 @@ export default function Home() {
     </>
   );
 }
+
+    
