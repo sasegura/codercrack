@@ -40,8 +40,6 @@ export default function Home() {
     { name: "Laura Gomez", company: "Founder of Creative Co.", quote: t('testimonials.laura.quote') },
   ];
 
-  const aboutMeImage = PlaceHolderImages.find(p => p.id === 'about-me');
-
   return (
     <>
       {/* Hero Section */}
@@ -172,28 +170,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="sobre-mi" className="py-20 md:py-28 bg-secondary">
-        <div className="container px-4 md:px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative aspect-square max-w-md mx-auto">
-              {aboutMeImage && <Image src={aboutMeImage.imageUrl} alt="Frontend Developer" data-ai-hint={aboutMeImage.imageHint} fill className="rounded-lg object-cover shadow-lg shadow-primary/10"/>}
-            </div>
-            <div>
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground mb-4">{t('about.title')}</h2>
-              <p className="text-muted-foreground mb-6 text-lg">
-                {t('about.paragraph')}
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">{t('about.expertise.title')}</span> {t('about.expertise.description')}</p></div>
-                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">{t('about.ux_ui.title')}</span> {t('about.ux_ui.description')}</p></div>
-                <div className="flex items-start gap-3"><CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" /><p><span className="font-semibold">{t('about.performance.title')}</span> {t('about.performance.description')}</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
       <section id="contacto" className="py-20 md:py-28 bg-background">
         <div className="container px-4 md:px-6">
@@ -209,5 +185,3 @@ export default function Home() {
     </>
   );
 }
-
-    

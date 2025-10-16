@@ -23,12 +23,6 @@
       "description": "Screenshot of Chatterbox app",
       "imageUrl": "/chatterbox.png",
       "imageHint": "chat application"
-    },
-    {
-      "id": "about-me",
-      "description": "Professional headshot of the developer",
-      "imageUrl": "/about-me.png",
-      "imageHint": "professional portrait"
     }
   ]
 }

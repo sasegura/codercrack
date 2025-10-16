@@ -2,7 +2,6 @@
   "nav": {
     "services": "Servicios",
     "projects": "Proyectos",
-    "about": "Sobre Mí",
     "contact": "Contacto"
   },
   "hero": {
@@ -142,22 +141,6 @@
       "quote": "Trabajar con ellos fue un placer. Entendieron nuestra visión a la perfección y entregaron un sitio web impecable y profesional."
     }
   },
-  "about": {
-    "title": "Sobre Mí",
-    "paragraph": "Soy un apasionado desarrollador frontend dedicado a construir interfaces de usuario modernas, intuitivas y de alto rendimiento. Con años de experiencia en el ecosistema de React, me especializo en transformar ideas complejas en realidades digitales.",
-    "expertise": {
-      "title": "Experiencia en React.js & Next.js:",
-      "description": "Desarrollo de aplicaciones robustas y optimizadas para SEO."
-    },
-    "ux_ui": {
-      "title": "Enfoque en UX/UI:",
-      "description": "Colaboración estrecha con diseñadores para crear experiencias de usuario memorables."
-    },
-    "performance": {
-      "title": "Optimización de Rendimiento:",
-      "description": "Obsesionado con la velocidad de carga y la eficiencia del frontend."
-    }
-  },
   "contact": {
     "title": "¿Listo para empezar tu proyecto?",
     "subtitle": "Contáctame para una consulta gratuita. Hablemos sobre cómo puedo ayudarte a alcanzar tus objetivos.",
@@ -172,9 +155,7 @@
     "contact_success_title": "Mensaje Enviado",
     "contact_success_description": "¡Gracias por tu mensaje! Te responderé pronto.",
     "form_submitted_title": "¡Formulario Enviado!",
-    "form_submitted_description": "Gracias por tu interés. Te responderé pronto.",
-    "audit_success_title": "Reporte generado con éxito.",
-    "audit_error_description": "Ocurrió un error al generar el reporte. Por favor, inténtalo de nuevo."
+    "form_submitted_description": "Gracias por tu interés. Te responderé pronto."
   },
   "validation": {
     "name_min": "El nombre debe tener al menos 2 caracteres.",
@@ -188,5 +169,3 @@
     "url_invalid": "Por favor, introduce una URL válida."
   }
 }
-
-    

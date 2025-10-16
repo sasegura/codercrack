@@ -2,7 +2,6 @@
   "nav": {
     "services": "Services",
     "projects": "Projects",
-    "about": "About Me",
     "contact": "Contact"
   },
   "hero": {
@@ -142,22 +141,6 @@
       "quote": "Working with them was a pleasure. They understood our vision perfectly and delivered a flawless and professional website."
     }
   },
-  "about": {
-    "title": "About Me",
-    "paragraph": "I am a passionate frontend developer dedicated to building modern, intuitive, and high-performance user interfaces. With years of experience in the React ecosystem, I specialize in transforming complex ideas into digital realities.",
-    "expertise": {
-      "title": "Expertise in React.js & Next.js:",
-      "description": "Development of robust and SEO-optimized applications."
-    },
-    "ux_ui": {
-      "title": "Focus on UX/UI:",
-      "description": "Close collaboration with designers to create memorable user experiences."
-    },
-    "performance": {
-      "title": "Performance Optimization:",
-      "description": "Obsessed with loading speed and frontend efficiency."
-    }
-  },
   "contact": {
     "title": "Ready to start your project?",
     "subtitle": "Contact me for a free consultation. Let's talk about how I can help you achieve your goals.",
@@ -172,9 +155,7 @@
     "contact_success_title": "Message Sent",
     "contact_success_description": "Thank you for your message! I will get back to you soon.",
     "form_submitted_title": "Form Submitted!",
-    "form_submitted_description": "Thank you for your interest. I will get back to you soon.",
-    "audit_success_title": "Report generated successfully.",
-    "audit_error_description": "An error occurred while generating the report. Please try again."
+    "form_submitted_description": "Thank you for your interest. I will get back to you soon."
   },
   "validation": {
     "name_min": "Name must be at least 2 characters long.",
@@ -188,5 +169,3 @@
     "url_invalid": "Please enter a valid URL."
   }
 }
-
-    
