@@ -3,49 +3,49 @@
     {
       "id": "project-fintrack",
       "description": "Screenshot of FinTrack app",
-      "imageUrl": "https://picsum.photos/seed/fintrack-dashboard/600/400",
+      "imageUrl": "/fintrack.png",
       "imageHint": "finance dashboard"
     },
     {
       "id": "project-globalroamer",
       "description": "Screenshot of GlobalRoamer app",
-      "imageUrl": "https://picsum.photos/seed/globalroamer-app/600/400",
+      "imageUrl": "/globalroamer.png",
       "imageHint": "travel destination"
     },
     {
       "id": "project-taskzen",
       "description": "Screenshot of TaskZen app",
-      "imageUrl": "https://picsum.photos/seed/taskzen-board/600/400",
+      "imageUrl": "/taskzen.png",
       "imageHint": "kanban board"
     },
     {
       "id": "project-chatterbox",
       "description": "Screenshot of Chatterbox app",
-      "imageUrl": "https://picsum.photos/seed/chatter-app/600/400",
+      "imageUrl": "/chatterbox.png",
       "imageHint": "chat application"
     },
     {
       "id": "project-2",
       "description": "Screenshot of a social network app",
-      "imageUrl": "https://picsum.photos/seed/p5/600/400",
+      "imageUrl": "/project-beta.png",
       "imageHint": "social network"
     },
     {
       "id": "project-3",
       "description": "Screenshot of a data visualization tool",
-      "imageUrl": "https://picsum.photos/seed/p6/600/400",
+      "imageUrl": "/project-gamma.png",
       "imageHint": "data charts"
     },
     {
       "id": "project-4",
       "description": "Screenshot of an e-commerce platform",
-      "imageUrl": "https://picsum.photos/seed/boutique-shop/600/400",
+      "imageUrl": "/project-delta.png",
       "imageHint": "boutique shop"
     },
     {
       "id": "about-me",
       "description": "Professional headshot of the developer",
-      "imageUrl": "https://picsum.photos/seed/dev/400/400",
+      "imageUrl": "/about-me.png",
       "imageHint": "professional portrait"
     }
   ]
