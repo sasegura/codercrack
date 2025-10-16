@@ -39,8 +39,8 @@
     {
       "id": "project-4",
       "description": "Screenshot of an e-commerce platform",
-      "imageUrl": "https://picsum.photos/seed/p7/600/400",
-      "imageHint": "ecommerce store"
+      "imageUrl": "https://picsum.photos/seed/boutique/600/400",
+      "imageHint": "boutique shop"
     },
     {
       "id": "about-me",
