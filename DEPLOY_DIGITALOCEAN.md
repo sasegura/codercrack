@@ -1,6 +1,6 @@
-# Guía de Despliegue en DigitalOcean
+# Guía de Despliegue en DigitalOcean (Static Site)
 
-Esta guía te ayudará a desplegar tu aplicación Next.js en DigitalOcean App Platform.
+Esta guía te ayudará a desplegar tu aplicación Next.js como sitio estático en DigitalOcean App Platform.
 
 ## Opción 1: Despliegue desde GitHub (Recomendado)
 
@@ -17,18 +17,17 @@ Esta guía te ayudará a desplegar tu aplicación Next.js en DigitalOcean App Pl
 6. Selecciona la rama `main`
 
 ### Paso 3: Configurar la aplicación
-DigitalOcean detectará automáticamente que es una aplicación Next.js. Si no lo hace:
+DigitalOcean detectará automáticamente que es un sitio estático. Si no lo hace:
 
-1. **Tipo de App**: Selecciona "Web Service"
+1. **Tipo de App**: Selecciona "Static Site"
 2. **Build Command**: `npm install && npm run build`
-3. **Run Command**: `npm start`
-4. **HTTP Port**: `3000`
-5. **Environment Variables**:
-   - `NODE_ENV`: `production`
+3. **Output Directory**: `out` (esta es la carpeta donde Next.js exporta los archivos estáticos)
+4. **Index Document**: `index.html`
+5. **Error Document**: `404.html` (opcional, Next.js lo genera automáticamente)
 
 ### Paso 4: Configurar el plan
-- **Plan**: Elige el plan básico (Basic) con el tamaño más pequeño (Basic $5/mes) para empezar
-- Puedes escalar más tarde si es necesario
+- **Plan**: Para sitios estáticos, DigitalOcean ofrece un plan gratuito con límites generosos
+- Los sitios estáticos son más económicos ya que no requieren servidor
 
 ### Paso 5: Desplegar
 1. Haz clic en **"Create Resources"** o **"Deploy"**
@@ -48,12 +47,14 @@ Si prefieres usar el archivo `.do/app.yaml` que ya está configurado:
 
 ## Variables de Entorno
 
-Si tu aplicación necesita variables de entorno (como claves de API, URLs de base de datos, etc.):
+**Nota importante**: Para sitios estáticos, las variables de entorno se incrustan en el código durante el build. Si necesitas variables de entorno:
 
 1. Ve a tu app en DigitalOcean
 2. Navega a **Settings** → **App-Level Environment Variables**
-3. Agrega las variables necesarias
+3. Agrega las variables necesarias (se usarán durante el build)
 4. Haz clic en **"Save"** y la app se redesplegará automáticamente
+
+**Importante**: Las variables de entorno deben comenzar con `NEXT_PUBLIC_` para que estén disponibles en el cliente en sitios estáticos.
 
 ## Actualizaciones Automáticas
 
@@ -66,19 +67,20 @@ Con la configuración actual, cada vez que hagas push a la rama `main` en GitHub
 
 ## Costos
 
-- **Plan Básico**: Desde $5/mes
-- El plan incluye:
-  - 512 MB RAM
-  - 1 GB de almacenamiento
-  - 1 vCPU compartido
-  - 100 GB de transferencia de datos
+- **Sitios Estáticos**: Plan gratuito disponible con límites generosos
+- Incluye:
+  - Hosting de archivos estáticos
+  - CDN global
+  - SSL automático
+  - 100 GB de transferencia de datos/mes (plan gratuito)
+  - Sin límite de ancho de banda en planes de pago
 
 ## Solución de Problemas
 
-### La aplicación no inicia
-- Verifica los logs en **Runtime Logs**
-- Asegúrate de que `NODE_ENV=production` esté configurado
-- Verifica que el puerto sea 3000
+### La aplicación no se despliega
+- Verifica los logs de build en **Build Logs**
+- Asegúrate de que el **Output Directory** sea `out`
+- Verifica que el build se complete exitosamente
 
 ### Error de build
 - Revisa los **Build Logs**
@@ -86,9 +88,10 @@ Con la configuración actual, cada vez que hagas push a la rama `main` en GitHub
 - Verifica que no haya errores de TypeScript o ESLint que bloqueen el build
 
 ### El diseño se ve distorsionado
-- Verifica que las rutas de assets sean relativas
-- Asegúrate de que `next.config.ts` esté configurado correctamente
+- Verifica que `next.config.ts` tenga `output: 'export'` y `images: { unoptimized: true }`
+- Asegúrate de que las rutas sean relativas (Next.js lo hace automáticamente con static export)
 - Revisa que las imágenes y estilos se carguen correctamente
+- Verifica la consola del navegador para errores de carga de recursos
 
 ## Personalizar el Dominio
 

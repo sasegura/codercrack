@@ -1,19 +1,13 @@
 name: codercrack
 region: nyc
-services:
+static_sites:
   - name: web
     github:
       repo: sasegura/codercrack
       branch: main
       deploy_on_push: true
     build_command: npm install && npm run build
-    run_command: npm start
-    environment_slug: node-js
-    instance_count: 1
-    instance_size_slug: basic-xxs
-    http_port: 3000
+    output_dir: out
     routes:
       - path: /
-    envs:
-      - key: NODE_ENV
-        value: production
+    catchall_document: index.html
